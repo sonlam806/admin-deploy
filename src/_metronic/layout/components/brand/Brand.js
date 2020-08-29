@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { toAbsoluteUrl } from "../../../_helpers";
-
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { toAbsoluteUrl } from '../../../_helpers';
+import SVG from 'react-inlinesvg';
 export function Brand() {
   return (
     <>
@@ -10,12 +10,13 @@ export function Brand() {
         className={`aside-brand d-flex flex-column align-items-center flex-column-auto py-5 py-lg-12`}
       >
         {/* begin::Logo */}
-        <Link to="" className="brand-logo">
-          <img
-            alt="logo"
-            src={toAbsoluteUrl("/media/logos/logo-letter-2.png")}
-            className="max-h-30px"
-          />
+        <Link to='' className='brand-logo'>
+          <SVG src={toAbsoluteUrl('/media/logos/HD.svg')} />
+          {/* <img
+            alt='logo'
+            src={toAbsoluteUrl('/media/logos/HD.svg')}
+            className='max-h-30px'
+          /> */}
         </Link>
         {/* end::Logo */}
       </div>

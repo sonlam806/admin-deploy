@@ -110,7 +110,7 @@ export default function AsideFooter({ layoutProps }) {
                 src={toAbsoluteUrl(
                   '/media/svg/icons/Layout/Layout-4-blocks.svg'
                 )}
-              />
+        />
             </span>
             <span className='label label-sm label-light-danger label-rounded font-weight-bolder position-absolute top-0 right-0 mt-1 mr-1'>
               3
