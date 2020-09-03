@@ -11,6 +11,7 @@ import { AsideMenu } from './aside-menu/AsideMenu';
 import { Brand } from '../brand/Brand';
 import { KTUtil } from './../../../_assets/js/components/util';
 import AsideFooter from './AsideFooter';
+import { HuongDaOnlineMenu } from './huongda-online-menu/HuongDaOnlineMenu';
 
 export function Aside() {
   const uiService = useHtmlClassService();
@@ -56,6 +57,7 @@ export function Aside() {
   const tabs = {
     tabId1: 'kt_aside_tab_1',
     tabId2: 'kt_aside_tab_2',
+    tabId3: 'kt_aside_tab_3',
   };
   const [activeTab, setActiveTab] = useState(tabs.tabId1);
   const handleTabChange = (id) => {
@@ -90,12 +92,11 @@ export function Aside() {
                 data-placement='rigth'
                 data-container='body'
                 data-boundary='window'
-                title='Latest Project'
               >
                 <OverlayTrigger
                   placement='right'
                   overlay={
-                    <Tooltip id='latest-project'>Latest Project</Tooltip>
+                    <Tooltip id='latest-project'>Quản lý bài viết</Tooltip>
                   }
                 >
                   <a
@@ -120,19 +121,16 @@ export function Aside() {
               {/* end::Item */}
 
               {/* begin::Item */}
-              {/* <li
+              <li
                 className='nav-item mb-3'
                 data-toggle='tooltip'
                 data-placement='rigth'
                 data-container='body'
                 data-boundary='window'
-                title='Metronic Features'
               >
                 <OverlayTrigger
                   placement='right'
-                  overlay={
-                    <Tooltip id='metronic-features'>Metronic Features</Tooltip>
-                  }
+                  overlay={<Tooltip id='metronic-features'>HuongDa ID</Tooltip>}
                 >
                   <a
                     href='#'
@@ -152,29 +150,30 @@ export function Aside() {
                     </span>
                   </a>
                 </OverlayTrigger>
-              </li> */}
+              </li>
               {/* end::Item */}
 
               {/* begin::Item */}
-              {/* <li
+              <li
                 className='nav-item mb-3'
                 data-toggle='tooltip'
                 data-placement='rigth'
                 data-container='body'
                 data-boundary='window'
-                title='Latest Reports'
               >
                 <OverlayTrigger
                   placement='right'
                   overlay={
-                    <Tooltip id='latest-reports'>Latest Reports</Tooltip>
+                    <Tooltip id='metronic-features'>HuongDa Online</Tooltip>
                   }
                 >
                   <a
                     href='#'
-                    className='nav-link btn btn-icon btn-clean btn-lg'
+                    className={`nav-link btn btn-icon btn-clean btn-lg ${activeTab ===
+                      tabs.tabId3 && 'active'}`}
                     data-toggle='tab'
-                    data-target='#kt_aside_tab_3'
+                    data-target={`#${tabs.tabId3}`}
+                    onClick={() => handleTabChange(tabs.tabId3)}
                     role='tab'
                   >
                     <span className='svg-icon svg-icon-lg'>
@@ -186,7 +185,7 @@ export function Aside() {
                     </span>
                   </a>
                 </OverlayTrigger>
-              </li> */}
+              </li>
               {/* end::Item */}
 
               {/* begin::Item */}
@@ -312,6 +311,7 @@ export function Aside() {
                 <div className='tab-content'>
                   <AsideSearch isActive={activeTab === tabs.tabId1} />
                   <AsideMenu isActive={activeTab === tabs.tabId2} />
+                  <HuongDaOnlineMenu isActive={activeTab === tabs.tabId3} />
                 </div>
               </div>
               {/* end::Workspace */}

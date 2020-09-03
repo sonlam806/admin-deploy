@@ -16,7 +16,7 @@ export default function AsideFooter({ layoutProps }) {
           <>
             <OverlayTrigger
               placement='right'
-              overlay={<Tooltip id='toggle-aside'>Toggle Aside</Tooltip>}
+              overlay={<Tooltip id='toggle-aside'>Đóng/Mở Menu</Tooltip>}
             >
               <span
                 className='aside-toggle btn btn-icon btn-primary btn-hover-primary shadow-sm'

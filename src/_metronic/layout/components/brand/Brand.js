@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { toAbsoluteUrl } from '../../../_helpers';
 import SVG from 'react-inlinesvg';
+
 export function Brand() {
   return (
     <>
@@ -12,11 +13,6 @@ export function Brand() {
         {/* begin::Logo */}
         <Link to='' className='brand-logo'>
           <SVG src={toAbsoluteUrl('/media/logos/HD.svg')} />
-          {/* <img
-            alt='logo'
-            src={toAbsoluteUrl('/media/logos/HD.svg')}
-            className='max-h-30px'
-          /> */}
         </Link>
         {/* end::Logo */}
       </div>

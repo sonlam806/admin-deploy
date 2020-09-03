@@ -38,7 +38,7 @@ export function Footer() {
               target='_blank'
               className='text-dark-75 text-hover-primary'
             >
-              HuongDa Group
+              HuongDa
             </a>
           </div>
           {/* end::Copyright */}
