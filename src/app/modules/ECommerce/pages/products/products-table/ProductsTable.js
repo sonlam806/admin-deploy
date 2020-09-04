@@ -1,24 +1,24 @@
 // React bootstrap table next =>
 // DOCS: https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/
 // STORYBOOK: https://react-bootstrap-table.github.io/react-bootstrap-table2/storybook/index.html
-import React, { useEffect, useMemo } from "react";
-import BootstrapTable from "react-bootstrap-table-next";
+import React, { useEffect, useMemo } from 'react';
+import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory, {
   PaginationProvider,
-} from "react-bootstrap-table2-paginator";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import * as actions from "../../../_redux/products/productsActions";
-import * as uiHelpers from "../ProductsUIHelpers";
+} from 'react-bootstrap-table2-paginator';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import * as actions from '../../../_redux/products/productsActions';
+import * as uiHelpers from '../ProductsUIHelpers';
 import {
   getSelectRow,
   getHandlerTableChange,
   NoRecordsFoundMessage,
   PleaseWaitMessage,
   sortCaret,
-} from "../../../../../../_metronic/_helpers";
-import * as columnFormatters from "./column-formatters";
-import { Pagination } from "../../../../../../_metronic/_partials/controls";
-import { useProductsUIContext } from "../ProductsUIContext";
+} from '../../../../../../_metronic/_helpers';
+import * as columnFormatters from './column-formatters';
+import { Pagination } from '../../../../../../_metronic/_partials/controls';
+import { useProductsUIContext } from '../ProductsUIContext';
 
 export function ProductsTable() {
   // Products UI Context
@@ -52,69 +52,70 @@ export function ProductsTable() {
   // Table columns
   const columns = [
     {
-      dataField: "VINCode",
-      text: "VIN Code (ID)",
+      dataField: 'profileImage',
+      text: 'ảnh đại diện',
+      sort: true,
+      sortCaret: sortCaret,
+      formatter: columnFormatters.ProfileImageColumnFormatter,
+    },
+    {
+      dataField: 'postName',
+      text: 'tên bài viết',
       sort: true,
       sortCaret: sortCaret,
     },
     {
-      dataField: "manufacture",
-      text: "Manufacture",
+      dataField: 'slug',
+      text: 'Slug',
       sort: true,
       sortCaret: sortCaret,
     },
     {
-      dataField: "model",
-      text: "Model",
+      dataField: 'language',
+      text: 'Ngôn ngữ',
       sort: true,
       sortCaret: sortCaret,
     },
     {
-      dataField: "modelYear",
-      text: "Model Year",
+      dataField: 'createDate',
+      text: 'Ngày tạo',
       sort: true,
       sortCaret: sortCaret,
+      formatter: columnFormatters.CreateDateColumnFormatter,
     },
     {
-      dataField: "color",
-      text: "Color",
+      dataField: 'owner',
+      text: 'Người tạo',
       sort: true,
       sortCaret: sortCaret,
-      formatter: columnFormatters.ColorColumnFormatter,
+      formatter: columnFormatters.OwnerColumnFormatter,
     },
+    // {
+    //   dataField: 'status',
+    //   text: 'Status',
+    //   sort: true,
+    //   sortCaret: sortCaret,
+    //   formatter: columnFormatters.StatusColumnFormatter,
+    // },
+    // {
+    //   dataField: 'condition',
+    //   text: 'Condition',
+    //   sort: true,
+    //   sortCaret: sortCaret,
+    //   formatter: columnFormatters.ConditionColumnFormatter,
+    // },
     {
-      dataField: "price",
-      text: "Price",
-      sort: true,
-      sortCaret: sortCaret,
-      formatter: columnFormatters.PriceColumnFormatter,
-    },
-    {
-      dataField: "status",
-      text: "Status",
-      sort: true,
-      sortCaret: sortCaret,
-      formatter: columnFormatters.StatusColumnFormatter,
-    },
-    {
-      dataField: "condition",
-      text: "Condition",
-      sort: true,
-      sortCaret: sortCaret,
-      formatter: columnFormatters.ConditionColumnFormatter,
-    },
-    {
-      dataField: "action",
-      text: "Actions",
+      dataField: 'action',
+      text: 'Chức năng',
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditProductPage: productsUIProps.openEditProductPage,
         openDeleteProductDialog: productsUIProps.openDeleteProductDialog,
       },
-      classes: "text-right pr-0",
-      headerClasses: "text-right pr-3",
+      classes: 'text-right pr-0',
+      headerClasses: 'text-right pr-3',
       style: {
-        minWidth: "100px",
+        minWidth: '100px',
       },
     },
   ];
@@ -136,12 +137,12 @@ export function ProductsTable() {
               paginationProps={paginationProps}
             >
               <BootstrapTable
-                wrapperClasses="table-responsive"
-                classes="table table-head-custom table-vertical-center overflow-hidden"
+                wrapperClasses='table-responsive'
+                classes='table table-head-custom table-vertical-center overflow-hidden'
                 bootstrap4
                 bordered={false}
                 remote
-                keyField="id"
+                keyField='id'
                 data={entities === null ? [] : entities}
                 columns={columns}
                 defaultSorted={uiHelpers.defaultSorted}

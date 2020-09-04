@@ -1,14 +1,15 @@
-import React, {useMemo} from "react";
+import React, { useMemo } from 'react';
 import {
   Card,
   CardBody,
   CardHeader,
   CardHeaderToolbar,
-} from "../../../../../_metronic/_partials/controls";
-import { ProductsFilter } from "./products-filter/ProductsFilter";
-import { ProductsTable } from "./products-table/ProductsTable";
-import { ProductsGrouping } from "./products-grouping/ProductsGrouping";
-import { useProductsUIContext } from "./ProductsUIContext";
+} from '../../../../../_metronic/_partials/controls';
+import { ProductsFilter } from './products-filter/ProductsFilter';
+import { ProductsTable } from './products-table/ProductsTable';
+import { ProductsGrouping } from './products-grouping/ProductsGrouping';
+import { useProductsUIContext } from './ProductsUIContext';
+import { ProductsSearch } from './products-search/ProductsSearch';
 
 export function ProductsCard() {
   const productsUIContext = useProductsUIContext();
@@ -28,8 +29,8 @@ export function ProductsCard() {
 
   return (
     <Card>
-      <CardHeader title="Products list">
-        <CardHeaderToolbar>
+      <CardHeader title='Products list'>
+        {/* <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
@@ -37,10 +38,11 @@ export function ProductsCard() {
           >
             New Product
           </button>
-        </CardHeaderToolbar>
+        </CardHeaderToolbar> */}
+        <ProductsSearch />
       </CardHeader>
       <CardBody>
-        <ProductsFilter />
+        {/* <ProductsFilter /> */}
         {productsUIProps.ids.length > 0 && (
           <>
             <ProductsGrouping />
