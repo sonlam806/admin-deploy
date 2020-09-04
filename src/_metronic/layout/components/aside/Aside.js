@@ -144,7 +144,8 @@ export function Aside() {
                     <span className='svg-icon svg-icon-lg'>
                       <SVG
                         src={toAbsoluteUrl(
-                          '/media/svg/icons/Communication/Group.svg'
+                          // '/media/svg/icons/Communication/Group.svg'
+                          '/media/svg/dashboard.svg'
                         )}
                       />
                     </span>
@@ -176,10 +177,11 @@ export function Aside() {
                     onClick={() => handleTabChange(tabs.tabId3)}
                     role='tab'
                   >
-                    <span className='svg-icon svg-icon-lg'>
+                    <span className='svg-icon svg-icon-lg custom-svg-size'>
                       <SVG
                         src={toAbsoluteUrl(
-                          '/media/svg/icons/Media/Equalizer.svg'
+                          // '/media/svg/icons/Media/Equalizer.svg'
+                          '/media/svg/HD.svg'
                         )}
                       />
                     </span>
