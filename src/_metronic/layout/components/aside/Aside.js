@@ -141,7 +141,7 @@ export function Aside() {
                     onClick={() => handleTabChange(tabs.tabId2)}
                     role='tab'
                   >
-                    <span className='svg-icon svg-icon-lg'>
+                    <span className='svg-icon svg-icon-lg custom-svg-size'>
                       <SVG
                         src={toAbsoluteUrl(
                           // '/media/svg/icons/Communication/Group.svg'
