@@ -49,7 +49,7 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
           aria-haspopup='true'
           data-menu-toggle='hover'
         >
-          <NavLink className='menu-link menu-toggle' to='/google-material'>
+          <NavLink className='menu-link menu-toggle' to='/'>
             <span className='svg-icon menu-icon'>
               <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
             </span>
@@ -65,9 +65,9 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
           aria-haspopup='true'
           data-menu-toggle='hover'
         >
-          <NavLink className='menu-link menu-toggle' to='/google-material'>
+          <NavLink className='menu-link menu-toggle' to='/'>
             <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
+              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Adjust.svg')} />
             </span>
             <span className='menu-text'>Quản lý danh mục</span>
             <i className='menu-arrow' />
@@ -81,9 +81,9 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
           aria-haspopup='true'
           data-menu-toggle='hover'
         >
-          <NavLink className='menu-link menu-toggle' to='/google-material'>
+          <NavLink className='menu-link menu-toggle' to='/'>
             <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
+              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Union.svg')} />
             </span>
             <span className='menu-text'>Quản lý tag</span>
             <i className='menu-arrow' />
@@ -108,9 +108,9 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
           aria-haspopup='true'
           data-menu-toggle='hover'
         >
-          <NavLink className='menu-link menu-toggle' to='/google-material'>
+          <NavLink className='menu-link menu-toggle' to='/'>
             <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
+              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Stamp.svg')} />
             </span>
             <span className='menu-text'>Quản lý công nghệ</span>
             <i className='menu-arrow' />
@@ -124,9 +124,9 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
           aria-haspopup='true'
           data-menu-toggle='hover'
         >
-          <NavLink className='menu-link menu-toggle' to='/google-material'>
+          <NavLink className='menu-link menu-toggle' to='/'>
             <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
+              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Sketch.svg')} />
             </span>
             <span className='menu-text'>Quản lý danh mục</span>
             <i className='menu-arrow' />
@@ -140,9 +140,11 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
           aria-haspopup='true'
           data-menu-toggle='hover'
         >
-          <NavLink className='menu-link menu-toggle' to='/google-material'>
+          <NavLink className='menu-link menu-toggle' to='/'>
             <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
+              <SVG
+                src={toAbsoluteUrl('/media/svg/icons/Design/Position.svg')}
+              />
             </span>
             <span className='menu-text'>Quản lý dự án</span>
             <i className='menu-arrow' />
@@ -156,9 +158,9 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
           aria-haspopup='true'
           data-menu-toggle='hover'
         >
-          <NavLink className='menu-link menu-toggle' to='/google-material'>
+          <NavLink className='menu-link menu-toggle' to='/'>
             <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
+              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Mask.svg')} />
             </span>
             <span className='menu-text'>Quản lý tag</span>
             <i className='menu-arrow' />
