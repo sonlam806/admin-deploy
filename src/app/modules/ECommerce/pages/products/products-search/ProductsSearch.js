@@ -12,10 +12,10 @@ const prepareFilter = (queryParams, values) => {
   // Filter by condition
   filter.condition = condition !== '' ? +condition : undefined;
   // Filter by all fields
-  filter.model = searchText;
+  filter.postName = searchText;
   if (searchText) {
-    filter.manufacture = searchText;
-    filter.VINCode = searchText;
+    // filter.manufacture = searchText;
+    filter.postName = searchText;
   }
   newQueryParams.filter = filter;
   return newQueryParams;
@@ -65,7 +65,7 @@ export function ProductsSearch({ listLoading }) {
                   type='text'
                   className='form-control'
                   name='searchText'
-                  placeholder='Search'
+                  placeholder='Tìm kiếm'
                   onBlur={handleBlur}
                   value={values.searchText}
                   onChange={(e) => {

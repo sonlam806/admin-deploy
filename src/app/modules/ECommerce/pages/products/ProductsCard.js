@@ -26,10 +26,9 @@ export function ProductsCard() {
       openFetchProductsDialog: productsUIContext.openFetchProductsDialog,
     };
   }, [productsUIContext]);
-
   return (
     <Card>
-      <CardHeader title='Products list'>
+      <CardHeader title='Danh sách bài viết'>
         {/* <CardHeaderToolbar>
           <button
             type="button"
