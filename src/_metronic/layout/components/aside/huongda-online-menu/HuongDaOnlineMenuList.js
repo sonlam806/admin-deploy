@@ -31,74 +31,90 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
         </li>
         {/*end::1 Level*/}
 
-        {/* Components */}
-        {/* begin::section */}
-        <li className='menu-section '>
-          <h4 className='menu-text'>Bài viết</h4>
-          <i className='menu-icon flaticon-more-v2'></i>
-        </li>
-        {/* end:: section */}
-
-        {/* Material-UI */}
+        {/* Bài viết */}
         {/*begin::1 Level*/}
         <li
           className={`menu-item menu-item-submenu ${getMenuItemActive(
-            '/google-material',
+            '/react-bootstrap',
             true
           )}`}
           aria-haspopup='true'
           data-menu-toggle='hover'
         >
-          <NavLink className='menu-link menu-toggle' to='/'>
+          <NavLink className='menu-link menu-toggle' to='/react-bootstrap'>
             <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
+              <SVG src={toAbsoluteUrl('/media/svg/icons/Shopping/Box2.svg')} />
             </span>
-            <span className='menu-text'>Quản lý bài viết</span>
+            <span className='menu-text'>Bài viết</span>
             <i className='menu-arrow' />
           </NavLink>
-        </li>
-        <li
-          className={`menu-item menu-item-submenu ${getMenuItemActive(
-            '/google-material',
-            true
-          )}`}
-          aria-haspopup='true'
-          data-menu-toggle='hover'
-        >
-          <NavLink className='menu-link menu-toggle' to='/'>
-            <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Adjust.svg')} />
-            </span>
-            <span className='menu-text'>Quản lý danh mục</span>
-            <i className='menu-arrow' />
-          </NavLink>
-        </li>
-        <li
-          className={`menu-item menu-item-submenu ${getMenuItemActive(
-            '/google-material',
-            true
-          )}`}
-          aria-haspopup='true'
-          data-menu-toggle='hover'
-        >
-          <NavLink className='menu-link menu-toggle' to='/'>
-            <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Union.svg')} />
-            </span>
-            <span className='menu-text'>Quản lý tag</span>
-            <i className='menu-arrow' />
-          </NavLink>
+          <div className='menu-submenu '>
+            <ul className='menu-subnav'>
+              <ul className='menu-subnav'>
+                <li
+                  className='menu-item  menu-item-parent'
+                  aria-haspopup='true'
+                >
+                  <span className='menu-link'>
+                    <span className='menu-text'>Bài viết</span>
+                  </span>
+                </li>
+
+                {/*begin::2 Level*/}
+                <li
+                  className={`menu-item ${getMenuItemActive(
+                    '/react-bootstrap/alert'
+                  )}`}
+                  aria-haspopup='true'
+                >
+                  <NavLink className='menu-link' to='/react-bootstrap/alert'>
+                    <i className='menu-bullet menu-bullet-dot'>
+                      <span />
+                    </i>
+                    <span className='menu-text'>Quản lý bài viết</span>
+                  </NavLink>
+                </li>
+                {/*end::2 Level*/}
+                {/*begin::2 Level*/}
+                <li
+                  className={`menu-item ${getMenuItemActive(
+                    '/react-bootstrap/badge'
+                  )}`}
+                  aria-haspopup='true'
+                >
+                  <NavLink className='menu-link' to='/react-bootstrap/badge'>
+                    <i className='menu-bullet menu-bullet-dot'>
+                      <span />
+                    </i>
+                    <span className='menu-text'>Quản lý danh mục</span>
+                  </NavLink>
+                </li>
+                {/*end::2 Level*/}
+                {/*begin::2 Level*/}
+                <li
+                  className={`menu-item ${getMenuItemActive(
+                    '/react-bootstrap/breadcrumb'
+                  )}`}
+                  aria-haspopup='true'
+                >
+                  <NavLink
+                    className='menu-link'
+                    to='/react-bootstrap/breadcrumb'
+                  >
+                    <i className='menu-bullet menu-bullet-dot'>
+                      <span />
+                    </i>
+                    <span className='menu-text'>Quản lý tag</span>
+                  </NavLink>
+                </li>
+                {/*end::2 Level*/}
+              </ul>
+            </ul>
+          </div>
         </li>
         {/*end::1 Level*/}
-        {/* Dự án */}
-        {/* start::2 Level */}
-        <li className='menu-section '>
-          <h4 className='menu-text'>Dự án</h4>
-          <i className='menu-icon flaticon-more-v2'></i>
-        </li>
-        {/* end:: section */}
 
-        {/* Material-UI */}
+        {/* Dự án */}
         {/*begin::1 Level*/}
         <li
           className={`menu-item menu-item-submenu ${getMenuItemActive(
@@ -108,65 +124,104 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
           aria-haspopup='true'
           data-menu-toggle='hover'
         >
-          <NavLink className='menu-link menu-toggle' to='/'>
-            <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Stamp.svg')} />
-            </span>
-            <span className='menu-text'>Quản lý công nghệ</span>
-            <i className='menu-arrow' />
-          </NavLink>
-        </li>
-        <li
-          className={`menu-item menu-item-submenu ${getMenuItemActive(
-            '/google-material',
-            true
-          )}`}
-          aria-haspopup='true'
-          data-menu-toggle='hover'
-        >
-          <NavLink className='menu-link menu-toggle' to='/'>
-            <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Sketch.svg')} />
-            </span>
-            <span className='menu-text'>Quản lý danh mục</span>
-            <i className='menu-arrow' />
-          </NavLink>
-        </li>
-        <li
-          className={`menu-item menu-item-submenu ${getMenuItemActive(
-            '/google-material',
-            true
-          )}`}
-          aria-haspopup='true'
-          data-menu-toggle='hover'
-        >
-          <NavLink className='menu-link menu-toggle' to='/'>
+          <NavLink className='menu-link menu-toggle' to='/google-material'>
             <span className='svg-icon menu-icon'>
               <SVG
-                src={toAbsoluteUrl('/media/svg/icons/Design/Position.svg')}
+                src={toAbsoluteUrl('/media/svg/icons/Shopping/Settings.svg')}
               />
             </span>
-            <span className='menu-text'>Quản lý dự án</span>
+            <span className='menu-text'>Dự án</span>
             <i className='menu-arrow' />
           </NavLink>
+          <div className='menu-submenu '>
+            <ul className='menu-subnav'>
+              <ul className='menu-subnav'>
+                <li
+                  className='menu-item  menu-item-parent'
+                  aria-haspopup='true'
+                >
+                  <span className='menu-link'>
+                    <span className='menu-text'>Dự án</span>
+                  </span>
+                </li>
+
+                {/*begin::2 Level*/}
+                <li
+                  className={`menu-item ${getMenuItemActive(
+                    '/google-material/layout/grid'
+                  )}`}
+                  aria-haspopup='true'
+                >
+                  <NavLink
+                    className='menu-link'
+                    to='/google-material/layout/grid'
+                  >
+                    <i className='menu-bullet menu-bullet-dot'>
+                      <span />
+                    </i>
+                    <span className='menu-text'>Quản lý công nghệ</span>
+                  </NavLink>
+                </li>
+                {/*end::2 Level*/}
+                {/*begin::2 Level*/}
+                <li
+                  className={`menu-item ${getMenuItemActive(
+                    '/google-material/navigation/breadcrumbs'
+                  )}`}
+                  aria-haspopup='true'
+                >
+                  <NavLink
+                    className='menu-link'
+                    to='/google-material/navigation/breadcrumbs'
+                  >
+                    <i className='menu-bullet menu-bullet-dot'>
+                      <span />
+                    </i>
+                    <span className='menu-text'>Quản lý dự án</span>
+                  </NavLink>
+                </li>
+                {/*end::2 Level*/}
+                {/*begin::2 Level*/}
+                <li
+                  className={`menu-item ${getMenuItemActive(
+                    '/google-material/inputs/autocomplete'
+                  )}`}
+                  aria-haspopup='true'
+                >
+                  <NavLink
+                    className='menu-link'
+                    to='/google-material/inputs/autocomplete'
+                  >
+                    <i className='menu-bullet menu-bullet-dot'>
+                      <span />
+                    </i>
+                    <span className='menu-text'>Quản lý danh mục</span>
+                  </NavLink>
+                </li>
+                {/*end::2 Level*/}
+                {/*begin::2 Level*/}
+                <li
+                  className={`menu-item ${getMenuItemActive(
+                    '/google-material/inputs/buttons'
+                  )}`}
+                  aria-haspopup='true'
+                >
+                  <NavLink
+                    className='menu-link'
+                    to='/google-material/inputs/buttons'
+                  >
+                    <i className='menu-bullet menu-bullet-dot'>
+                      <span />
+                    </i>
+                    <span className='menu-text'>Quản lý tag</span>
+                  </NavLink>
+                </li>
+                {/*end::2 Level*/}
+              </ul>
+            </ul>
+          </div>
         </li>
-        <li
-          className={`menu-item menu-item-submenu ${getMenuItemActive(
-            '/google-material',
-            true
-          )}`}
-          aria-haspopup='true'
-          data-menu-toggle='hover'
-        >
-          <NavLink className='menu-link menu-toggle' to='/'>
-            <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Mask.svg')} />
-            </span>
-            <span className='menu-text'>Quản lý tag</span>
-            <i className='menu-arrow' />
-          </NavLink>
-        </li>
-        {/* end::2 Level */}
+        {/*end::1 Level*/}
       </ul>
 
       {/* end::Menu Nav */}

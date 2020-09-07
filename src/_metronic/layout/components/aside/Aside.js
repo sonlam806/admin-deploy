@@ -145,7 +145,7 @@ export function Aside() {
                       <SVG
                         src={toAbsoluteUrl(
                           // '/media/svg/icons/Communication/Group.svg'
-                          '/media/svg/dashboard.svg'
+                          '/media/svg/Vong.svg'
                         )}
                       />
                     </span>
