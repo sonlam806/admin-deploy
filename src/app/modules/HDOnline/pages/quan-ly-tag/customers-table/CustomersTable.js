@@ -61,20 +61,20 @@ export function CustomersTable() {
       headerSortingClasses,
     },
     {
-      dataField: 'tagsName',
+      dataField: 'firstName',
       text: 'Tên',
       sort: true,
       sortCaret: sortCaret,
       headerSortingClasses,
-      formatter: columnFormatters.TagNameColumnFormatter,
+      // formatter: columnFormatters.TagNameColumnFormatter,
     },
     {
-      dataField: 'slug',
+      dataField: 'userName',
       text: 'slug',
       sort: true,
       sortCaret: sortCaret,
       headerSortingClasses,
-      formatter: columnFormatters.SlugColumnFormatter,
+      // formatter: columnFormatters.SlugColumnFormatter,
     },
 
     {

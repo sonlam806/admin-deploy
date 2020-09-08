@@ -4,7 +4,9 @@ export const CUSTOMERS_URL = "api/customers";
 
 // CREATE =>  POST: add a new customer to the server
 export function createCustomer(customer) {
-  return axios.post(CUSTOMERS_URL, { customer });
+  return axios.post(CUSTOMERS_URL, {
+    customer
+  });
 }
 
 // READ
@@ -19,12 +21,16 @@ export function getCustomerById(customerId) {
 // Method from server should return QueryResultsModel(items: any[], totalsCount: number)
 // items => filtered/sorted result
 export function findCustomers(queryParams) {
-  return axios.post(`${CUSTOMERS_URL}/find`, { queryParams });
+  return axios.post(`${CUSTOMERS_URL}/find`, {
+    queryParams
+  });
 }
 
 // UPDATE => PUT: update the customer on the server
 export function updateCustomer(customer) {
-  return axios.put(`${CUSTOMERS_URL}/${customer.id}`, { customer });
+  return axios.put(`${CUSTOMERS_URL}/${customer.id}`, {
+    customer
+  });
 }
 
 // UPDATE Status
@@ -42,5 +48,7 @@ export function deleteCustomer(customerId) {
 
 // DELETE Customers by ids
 export function deleteCustomers(ids) {
-  return axios.post(`${CUSTOMERS_URL}/deleteCustomers`, { ids });
+  return axios.post(`${CUSTOMERS_URL}/deleteCustomers`, {
+    ids
+  });
 }

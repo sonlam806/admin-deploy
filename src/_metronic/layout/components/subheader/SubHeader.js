@@ -90,7 +90,7 @@ export function SubHeader() {
 
         {/* Toolbar */}
         <div className='d-flex align-items-center'>
-          <button
+          {/* <button
             type='button'
             className={`btn btn-fixed-height ${
               layoutProps.subheaderFixed ? 'btn-default' : 'btn-white'
@@ -104,7 +104,7 @@ export function SubHeader() {
               />
             </span>
             Thêm bài viết
-          </button>
+          </button> */}
 
           {/* <QuickActions /> */}
 

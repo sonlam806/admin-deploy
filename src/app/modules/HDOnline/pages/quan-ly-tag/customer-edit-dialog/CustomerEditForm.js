@@ -10,11 +10,11 @@ import { Input } from '../../../../../../_metronic/_partials/controls';
 
 // Validation schema
 const CustomerEditSchema = Yup.object().shape({
-  tagsName: Yup.string()
+  firstName: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Phải nhập tên tag'),
-  slug: Yup.string()
+  userName: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols'),
 });
@@ -48,7 +48,7 @@ export function CustomerEditForm({
                   {/* TAG */}
                   <div className='col-lg-4'>
                     <Field
-                      name='tagsName'
+                      name='firstName'
                       component={Input}
                       placeholder='Tên tags'
                       label='Tên tags'
@@ -57,7 +57,7 @@ export function CustomerEditForm({
                   {/* SLUG */}
                   <div className='col-lg-4'>
                     <Field
-                      name='slug'
+                      name='userName'
                       component={Input}
                       placeholder='Slug'
                       label='Slug'
