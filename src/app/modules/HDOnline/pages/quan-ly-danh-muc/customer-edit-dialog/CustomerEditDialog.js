@@ -7,7 +7,6 @@ import { CustomerEditForm } from './CustomerEditForm';
 import { useCustomersUIContext } from '../CustomersUIContext';
 
 export function CustomerEditDialog({ id, show, onHide }) {
-  console.log('add new');
   // Customers UI Context
   const customersUIContext = useCustomersUIContext();
   const customersUIProps = useMemo(() => {

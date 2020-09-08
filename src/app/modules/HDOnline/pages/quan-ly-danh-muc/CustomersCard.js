@@ -1,14 +1,14 @@
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react';
 import {
   Card,
   CardBody,
   CardHeader,
   CardHeaderToolbar,
-} from "../../../../../_metronic/_partials/controls";
-import { CustomersFilter } from "./customers-filter/CustomersFilter";
-import { CustomersTable } from "./customers-table/CustomersTable";
-import { CustomersGrouping } from "./customers-grouping/CustomersGrouping";
-import { useCustomersUIContext } from "./CustomersUIContext";
+} from '../../../../../_metronic/_partials/controls';
+import { CustomersFilter } from './customers-filter/CustomersFilter';
+import { CustomersTable } from './customers-table/CustomersTable';
+import { CustomersGrouping } from './customers-grouping/CustomersGrouping';
+import { useCustomersUIContext } from './CustomersUIContext';
 
 export function CustomersCard() {
   const customersUIContext = useCustomersUIContext();
@@ -21,19 +21,19 @@ export function CustomersCard() {
 
   return (
     <Card>
-      <CardHeader title="Customers list">
+      <CardHeader title='Danh sách danh mục'>
+        <CustomersFilter />
         <CardHeaderToolbar>
           <button
-            type="button"
-            className="btn btn-primary"
+            type='button'
+            className='btn btn-primary'
             onClick={customersUIProps.newCustomerButtonClick}
           >
-            New Customer
+            Thêm danh mục{' '}
           </button>
         </CardHeaderToolbar>
       </CardHeader>
       <CardBody>
-        <CustomersFilter />
         {customersUIProps.ids.length > 0 && <CustomersGrouping />}
         <CustomersTable />
       </CardBody>

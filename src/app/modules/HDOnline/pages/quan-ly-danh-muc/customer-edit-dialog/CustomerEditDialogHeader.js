@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { shallowEqual, useSelector } from "react-redux";
-import { Modal } from "react-bootstrap";
-import {ModalProgressBar} from "../../../../../../_metronic/_partials/controls";
+import React, { useState, useEffect } from 'react';
+import { shallowEqual, useSelector } from 'react-redux';
+import { Modal } from 'react-bootstrap';
+import { ModalProgressBar } from '../../../../../../_metronic/_partials/controls';
 
 export function CustomerEditDialogHeader({ id }) {
   // Customers Redux state
@@ -13,12 +13,12 @@ export function CustomerEditDialogHeader({ id }) {
     shallowEqual
   );
 
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
   // Title couting
   useEffect(() => {
-    let _title = id ? "" : "New Customer";
+    let _title = id ? '' : 'Thêm danh mục';
     if (customerForEdit && id) {
-      _title = `Edit customer '${customerForEdit.firstName} ${customerForEdit.lastName}'`;
+      _title = `Chỉnh sửa danh mục '${customerForEdit.firstName} ${customerForEdit.lastName}'`;
     }
 
     setTitle(_title);
@@ -29,7 +29,7 @@ export function CustomerEditDialogHeader({ id }) {
     <>
       {actionsLoading && <ModalProgressBar />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{title}</Modal.Title>
+        <Modal.Title id='example-modal-sizes-title-lg'>{title}</Modal.Title>
       </Modal.Header>
     </>
   );

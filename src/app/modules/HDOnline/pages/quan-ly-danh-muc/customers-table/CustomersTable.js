@@ -1,13 +1,13 @@
 // React bootstrap table next =>
 // DOCS: https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/
 // STORYBOOK: https://react-bootstrap-table.github.io/react-bootstrap-table2/storybook/index.html
-import React, { useEffect, useMemo } from "react";
-import BootstrapTable from "react-bootstrap-table-next";
+import React, { useEffect, useMemo } from 'react';
+import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory, {
   PaginationProvider,
-} from "react-bootstrap-table2-paginator";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import * as actions from "../../../_redux/customers/customersActions";
+} from 'react-bootstrap-table2-paginator';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import * as actions from '../../../_redux/customers/customersActions';
 import {
   getSelectRow,
   getHandlerTableChange,
@@ -15,11 +15,11 @@ import {
   PleaseWaitMessage,
   sortCaret,
   headerSortingClasses,
-} from "../../../../../../_metronic/_helpers";
-import * as uiHelpers from "../CustomersUIHelpers";
-import * as columnFormatters from "./column-formatters";
-import { Pagination } from "../../../../../../_metronic/_partials/controls";
-import { useCustomersUIContext } from "../CustomersUIContext";
+} from '../../../../../../_metronic/_helpers';
+import * as uiHelpers from '../CustomersUIHelpers';
+import * as columnFormatters from './column-formatters';
+import { Pagination } from '../../../../../../_metronic/_partials/controls';
+import { useCustomersUIContext } from '../CustomersUIContext';
 
 export function CustomersTable() {
   // Customers UI Context
@@ -54,66 +54,45 @@ export function CustomersTable() {
   // Table columns
   const columns = [
     {
-      dataField: "id",
-      text: "ID",
+      dataField: 'id',
+      text: 'ID',
       sort: true,
       sortCaret: sortCaret,
       headerSortingClasses,
     },
     {
-      dataField: "firstName",
-      text: "Firstname",
+      dataField: 'firstName',
+      text: 'Tên',
       sort: true,
       sortCaret: sortCaret,
       headerSortingClasses,
     },
     {
-      dataField: "lastName",
-      text: "Lastname",
+      dataField: 'lastName',
+      text: 'Chọn danh mục cha',
       sort: true,
       sortCaret: sortCaret,
       headerSortingClasses,
     },
     {
-      dataField: "email",
-      text: "Email",
+      dataField: 'userName',
+      text: 'slug',
       sort: true,
       sortCaret: sortCaret,
       headerSortingClasses,
     },
     {
-      dataField: "gender",
-      text: "Gender",
-      sort: false,
-      sortCaret: sortCaret,
-    },
-    {
-      dataField: "status",
-      text: "Status",
-      sort: true,
-      sortCaret: sortCaret,
-      formatter: columnFormatters.StatusColumnFormatter,
-      headerSortingClasses,
-    },
-    {
-      dataField: "type",
-      text: "Type",
-      sort: true,
-      sortCaret: sortCaret,
-      formatter: columnFormatters.TypeColumnFormatter,
-    },
-    {
-      dataField: "action",
-      text: "Actions",
+      dataField: 'action',
+      text: 'Actions',
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditCustomerDialog: customersUIProps.openEditCustomerDialog,
         openDeleteCustomerDialog: customersUIProps.openDeleteCustomerDialog,
       },
-      classes: "text-right pr-0",
-      headerClasses: "text-right pr-3",
+      classes: 'text-right pr-0',
+      headerClasses: 'text-right pr-3',
       style: {
-        minWidth: "100px",
+        minWidth: '100px',
       },
     },
   ];
@@ -135,12 +114,12 @@ export function CustomersTable() {
               paginationProps={paginationProps}
             >
               <BootstrapTable
-                wrapperClasses="table-responsive"
+                wrapperClasses='table-responsive'
                 bordered={false}
-                classes="table table-head-custom table-vertical-center overflow-hidden"
+                classes='table table-head-custom table-vertical-center overflow-hidden'
                 bootstrap4
                 remote
-                keyField="id"
+                keyField='id'
                 data={entities === null ? [] : entities}
                 columns={columns}
                 defaultSorted={uiHelpers.defaultSorted}
