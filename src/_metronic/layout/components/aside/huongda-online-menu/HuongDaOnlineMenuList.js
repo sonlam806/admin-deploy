@@ -35,13 +35,16 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
         {/*begin::1 Level*/}
         <li
           className={`menu-item menu-item-submenu ${getMenuItemActive(
-            '/react-bootstrap',
+            '/huong-da-online/bai-viet',
             true
           )}`}
           aria-haspopup='true'
           data-menu-toggle='hover'
         >
-          <NavLink className='menu-link menu-toggle' to='/react-bootstrap'>
+          <NavLink
+            className='menu-link menu-toggle'
+            to='/huong-da-online/bai-viet'
+          >
             <span className='svg-icon menu-icon'>
               <SVG src={toAbsoluteUrl('/media/svg/icons/Shopping/Box2.svg')} />
             </span>
@@ -63,11 +66,14 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                 {/*begin::2 Level*/}
                 <li
                   className={`menu-item ${getMenuItemActive(
-                    '/react-bootstrap/alert'
+                    '/huong-da-online/bai-viet/quan-ly-bai-viet'
                   )}`}
                   aria-haspopup='true'
                 >
-                  <NavLink className='menu-link' to='/react-bootstrap/alert'>
+                  <NavLink
+                    className='menu-link'
+                    to='/huong-da-online/bai-viet/quan-ly-bai-viet'
+                  >
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />
                     </i>
@@ -78,11 +84,14 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                 {/*begin::2 Level*/}
                 <li
                   className={`menu-item ${getMenuItemActive(
-                    '/react-bootstrap/badge'
+                    '/huong-da-online/bai-viet/quan-ly-danh-muc'
                   )}`}
                   aria-haspopup='true'
                 >
-                  <NavLink className='menu-link' to='/react-bootstrap/badge'>
+                  <NavLink
+                    className='menu-link'
+                    to='/huong-da-online/bai-viet/quan-ly-danh-muc'
+                  >
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />
                     </i>
@@ -93,18 +102,18 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                 {/*begin::2 Level*/}
                 <li
                   className={`menu-item ${getMenuItemActive(
-                    '/react-bootstrap/breadcrumb'
+                    '/huong-da-online/bai-viet/quan-ly-tag'
                   )}`}
                   aria-haspopup='true'
                 >
                   <NavLink
                     className='menu-link'
-                    to='/react-bootstrap/breadcrumb'
+                    to='/huong-da-online/bai-viet/quan-ly-tag'
                   >
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />
                     </i>
-                    <span className='menu-text'>Quản lý tag</span>
+                    <span className='menu-text'>Quản lý tags</span>
                   </NavLink>
                 </li>
                 {/*end::2 Level*/}

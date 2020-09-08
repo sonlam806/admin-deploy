@@ -108,12 +108,8 @@ export function Aside() {
                     role='tab'
                     onClick={() => handleTabChange(tabs.tabId1)}
                   >
-                    <span className='svg-icon svg-icon-lg'>
-                      <SVG
-                        src={toAbsoluteUrl(
-                          '/media/svg/icons/Layout/Layout-4-blocks.svg'
-                        )}
-                      />
+                    <span className='custom-svg'>
+                      <SVG src={toAbsoluteUrl('/media/svg/dashboard.svg')} />
                     </span>
                   </a>
                 </OverlayTrigger>
@@ -141,11 +137,11 @@ export function Aside() {
                     onClick={() => handleTabChange(tabs.tabId2)}
                     role='tab'
                   >
-                    <span className='svg-icon svg-icon-lg custom-svg-size'>
+                    <span className='custom-svg'>
                       <SVG
                         src={toAbsoluteUrl(
                           // '/media/svg/icons/Communication/Group.svg'
-                          '/media/svg/Vong.svg'
+                          '/media/svg/HD.svg'
                         )}
                       />
                     </span>
@@ -177,11 +173,11 @@ export function Aside() {
                     onClick={() => handleTabChange(tabs.tabId3)}
                     role='tab'
                   >
-                    <span className='svg-icon svg-icon-lg custom-svg-size'>
+                    <span className='custom-svg'>
                       <SVG
                         src={toAbsoluteUrl(
                           // '/media/svg/icons/Media/Equalizer.svg'
-                          '/media/svg/HD.svg'
+                          '/media/svg/Vong.svg'
                         )}
                       />
                     </span>

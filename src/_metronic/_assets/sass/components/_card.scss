@@ -253,6 +253,10 @@
 
     .card-header {
         .card-toolbar {
+            position: absolute;
+            right: 30px;
+            top: 10px;
+
             [data-card-tool="toggle"] {
                 i {
                     transition: $transition;
