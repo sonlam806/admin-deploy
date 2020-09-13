@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useMemo, useState } from 'react';
 import objectPath from 'object-path';
+import { NavLink } from 'react-router-dom';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import SVG from 'react-inlinesvg';
 import { useHtmlClassService } from '../../_core/MetronicLayout';
@@ -95,9 +96,7 @@ export function Aside() {
               >
                 <OverlayTrigger
                   placement='right'
-                  overlay={
-                    <Tooltip id='latest-project'>Quản lý bài viết</Tooltip>
-                  }
+                  overlay={<Tooltip id='latest-project'>Dashboard</Tooltip>}
                 >
                   <a
                     href='#'
@@ -138,12 +137,7 @@ export function Aside() {
                     role='tab'
                   >
                     <span className='custom-svg'>
-                      <SVG
-                        src={toAbsoluteUrl(
-                          // '/media/svg/icons/Communication/Group.svg'
-                          '/media/svg/HD.svg'
-                        )}
-                      />
+                      <SVG src={toAbsoluteUrl('/media/svg/HD.svg')} />
                     </span>
                   </a>
                 </OverlayTrigger>
@@ -161,9 +155,22 @@ export function Aside() {
                 <OverlayTrigger
                   placement='right'
                   overlay={
-                    <Tooltip id='metronic-features'>HuongDa Online</Tooltip>
+                    <Tooltip id='huong-da-online'>HuongDa Online</Tooltip>
                   }
                 >
+                  {/* <NavLink
+                    to='/huong-da-online'
+                    className={`nav-link btn btn-icon btn-clean btn-lg ${activeTab ===
+                      tabs.tabId3 && 'active'}`}
+                    data-toggle='tab'
+                    data-target={`#${tabs.tabId3}`}
+                    onClick={() => handleTabChange(tabs.tabId3)}
+                    role='tab'
+                  >
+                    <span className='custom-svg'>
+                      <SVG src={toAbsoluteUrl('/media/svg/Vong.svg')} />
+                    </span>
+                  </NavLink> */}
                   <a
                     href='#'
                     className={`nav-link btn btn-icon btn-clean btn-lg ${activeTab ===
@@ -174,12 +181,7 @@ export function Aside() {
                     role='tab'
                   >
                     <span className='custom-svg'>
-                      <SVG
-                        src={toAbsoluteUrl(
-                          // '/media/svg/icons/Media/Equalizer.svg'
-                          '/media/svg/Vong.svg'
-                        )}
-                      />
+                      <SVG src={toAbsoluteUrl('/media/svg/Vong.svg')} />
                     </span>
                   </a>
                 </OverlayTrigger>

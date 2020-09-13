@@ -1,7 +1,7 @@
 /* eslint-disable no-script-url,jsx-a11y/anchor-is-valid */
 import React, { useMemo, useLayoutEffect, useEffect } from 'react';
 import objectPath from 'object-path';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import SVG from 'react-inlinesvg';
 import { toAbsoluteUrl } from '../../../_helpers';
 // import { QuickActions } from './components/QuickActions';
@@ -16,7 +16,6 @@ export function SubHeader() {
   const uiService = useHtmlClassService();
   const location = useLocation();
   const subheader = useSubheader();
-
   const layoutProps = useMemo(() => {
     return {
       config: uiService.config,
@@ -77,8 +76,7 @@ export function SubHeader() {
           <div className='d-flex align-items-baseline mr-5'>
             {/* begin::Title */}
             <h2 className='subheader-title text-dark font-weight-bold my-2 mr-3'>
-              {/* {subheader.title} */}
-              Quản Lý Bài Viết
+              {subheader.title}
             </h2>
             {/* end::Title */}
 

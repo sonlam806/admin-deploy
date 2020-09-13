@@ -4,8 +4,9 @@ import { CustomersPage } from './customers/CustomersPage';
 import { ProductsPage } from './products/ProductsPage';
 import { ProductEdit } from './products/product-edit/ProductEdit';
 import { LayoutSplashScreen, ContentRoute } from '../../../../_metronic/layout';
-import { QuanLyTagPage } from './quan-ly-tag/QuanLyTagPage';
+import { PostsPage } from './posts/PostsPage';
 import { QuanLyDanhMucPage } from './quan-ly-danh-muc/QuanLyDanhMucPage';
+import { QuanLyTagPage } from './quan-ly-tag/QuanLyTagPage';
 
 export default function huongdaOnlinePage() {
   return (
@@ -16,8 +17,8 @@ export default function huongdaOnlinePage() {
           /* Redirect from eCommerce root URL to /customers */
           <Redirect
             exact={true}
-            from='/huong-da-online'
-            to='/huong-da-online/bai-viet'
+            from='/huong-da-online/posts'
+            to='/huong-da-online/posts/post'
           />
         }{' '}
         <ContentRoute
@@ -25,11 +26,15 @@ export default function huongdaOnlinePage() {
           component={CustomersPage}
         />{' '}
         <ContentRoute
-          path='/huong-da-online/bai-viet/quan-ly-tag'
+          path='/huong-da-online/posts/post'
+          component={PostsPage}
+        />{' '}
+        <ContentRoute
+          path='/huong-da-online/posts/tags'
           component={QuanLyTagPage}
         />{' '}
         <ContentRoute
-          path='/huong-da-online/bai-viet/quan-ly-danh-muc'
+          path='/huong-da-online/posts/category'
           component={QuanLyDanhMucPage}
         />{' '}
         <ContentRoute

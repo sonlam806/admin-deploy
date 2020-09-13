@@ -4,6 +4,7 @@ import { LayoutSplashScreen, ContentRoute } from '../_metronic/layout';
 import { BuilderPage } from './pages/BuilderPage';
 import { MyPage } from './pages/MyPage';
 import { DashboardPage } from './pages/DashboardPage';
+import { HuongDaOnlinePage } from './pages/HuongDaOnlinePage';
 
 const GoogleMaterialPage = lazy(() =>
   import('./modules/GoogleMaterialExamples/GoogleMaterialPage')
@@ -14,9 +15,9 @@ const ReactBootstrapPage = lazy(() =>
 const ECommercePage = lazy(() =>
   import('./modules/ECommerce/pages/eCommercePage')
 );
-const HuongDaOnlinePage = lazy(() =>
-  import('./modules/HDOnline/pages/huongdaOnlinePage')
-);
+// const HuongDaOnlinePage = lazy(() =>
+//   import('./modules/HDOnline/pages/huongdaOnlinePage')
+// );
 
 export default function BasePage() {
   // useEffect(() => {
@@ -34,6 +35,7 @@ export default function BasePage() {
         <ContentRoute path='/dashboard' component={DashboardPage} />
         <ContentRoute path='/builder' component={BuilderPage} />
         <ContentRoute path='/my-page' component={MyPage} />
+        <ContentRoute path='/huong-da-online' component={HuongDaOnlinePage} />
         <Route path='/google-material' component={GoogleMaterialPage} />
         <Route path='/react-bootstrap' component={ReactBootstrapPage} />
         <Route path='/e-commerce' component={ECommercePage} />

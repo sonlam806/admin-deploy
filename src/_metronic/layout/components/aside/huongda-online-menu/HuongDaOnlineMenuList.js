@@ -35,7 +35,7 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
         {/*begin::1 Level*/}
         <li
           className={`menu-item menu-item-submenu ${getMenuItemActive(
-            '/huong-da-online/bai-viet',
+            '/huong-da-online/posts',
             true
           )}`}
           aria-haspopup='true'
@@ -43,7 +43,7 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
         >
           <NavLink
             className='menu-link menu-toggle'
-            to='/huong-da-online/bai-viet'
+            to='/huong-da-online/posts'
           >
             <span className='svg-icon menu-icon'>
               <SVG src={toAbsoluteUrl('/media/svg/icons/Shopping/Box2.svg')} />
@@ -66,13 +66,13 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                 {/*begin::2 Level*/}
                 <li
                   className={`menu-item ${getMenuItemActive(
-                    '/huong-da-online/bai-viet/quan-ly-bai-viet'
+                    '/huong-da-online/posts/post'
                   )}`}
                   aria-haspopup='true'
                 >
                   <NavLink
                     className='menu-link'
-                    to='/huong-da-online/bai-viet/quan-ly-bai-viet'
+                    to='/huong-da-online/posts/post'
                   >
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />
@@ -84,13 +84,13 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                 {/*begin::2 Level*/}
                 <li
                   className={`menu-item ${getMenuItemActive(
-                    '/huong-da-online/bai-viet/quan-ly-danh-muc'
+                    '/huong-da-online/posts/category'
                   )}`}
                   aria-haspopup='true'
                 >
                   <NavLink
                     className='menu-link'
-                    to='/huong-da-online/bai-viet/quan-ly-danh-muc'
+                    to='/huong-da-online/posts/category'
                   >
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />
@@ -102,13 +102,13 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                 {/*begin::2 Level*/}
                 <li
                   className={`menu-item ${getMenuItemActive(
-                    '/huong-da-online/bai-viet/quan-ly-tag'
+                    '/huong-da-online/posts/tags'
                   )}`}
                   aria-haspopup='true'
                 >
                   <NavLink
                     className='menu-link'
-                    to='/huong-da-online/bai-viet/quan-ly-tag'
+                    to='/huong-da-online/posts/tags'
                   >
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />
@@ -168,7 +168,7 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />
                     </i>
-                    <span className='menu-text'>Quản lý công nghệ</span>
+                    <span className='menu-text'>Quản lý dự án</span>
                   </NavLink>
                 </li>
                 {/*end::2 Level*/}
@@ -186,7 +186,7 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />
                     </i>
-                    <span className='menu-text'>Quản lý dự án</span>
+                    <span className='menu-text'>Quản lý công nghệ</span>
                   </NavLink>
                 </li>
                 {/*end::2 Level*/}

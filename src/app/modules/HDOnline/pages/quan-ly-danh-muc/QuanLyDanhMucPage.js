@@ -12,88 +12,86 @@ import { CustomersCard } from './CustomersCard';
 export function QuanLyDanhMucPage({ history }) {
   const customersUIEvents = {
     newCustomerButtonClick: () => {
-      history.push('/huong-da-online/bai-viet/quan-ly-danh-muc/new');
+      history.push('/huong-da-online/posts/category/new');
     },
     openEditCustomerDialog: (id) => {
-      history.push(`/huong-da-online/bai-viet/quan-ly-danh-muc/${id}/edit`);
+      history.push(`/huong-da-online/posts/category/${id}/edit`);
     },
     openDeleteCustomerDialog: (id) => {
-      history.push(`/huong-da-online/bai-viet/quan-ly-danh-muc/${id}/delete`);
+      history.push(`/huong-da-online/posts/category/${id}/delete`);
     },
     openDeleteCustomersDialog: () => {
-      history.push(
-        `/huong-da-online/bai-viet/quan-ly-danh-muc/deleteCustomers`
-      );
+      history.push(`/huong-da-online/posts/category/deleteCustomers`);
     },
     openFetchCustomersDialog: () => {
-      history.push(`/huong-da-online/bai-viet/quan-ly-danh-muc/fetch`);
+      history.push(`/huong-da-online/posts/category/fetch`);
     },
     openUpdateCustomersStatusDialog: () => {
-      history.push('/huong-da-online/bai-viet/quan-ly-danh-muc/updateStatus');
+      history.push('/huong-da-online/posts/category/updateStatus');
     },
   };
 
   return (
     <CustomersUIProvider customersUIEvents={customersUIEvents}>
       <CustomersLoadingDialog />
-      <Route path='/huong-da-online/bai-viet/quan-ly-danh-muc/new'>
+      <Route path='/huong-da-online/posts/category/new'>
         {({ history, match }) => (
           <CustomerEditDialog
             show={match != null}
             onHide={() => {
-              history.push('/huong-da-online/bai-viet/quan-ly-danh-muc');
+              history.push('/huong-da-online/posts/category');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/bai-viet/quan-ly-danh-muc/:id/edit'>
+      <Route path='/huong-da-online/posts/category/:id/edit'>
         {({ history, match }) => (
           <CustomerEditDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {
-              history.push('/huong-da-online/bai-viet/quan-ly-danh-muc');
+              history.push('/huong-da-online/posts/category');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/bai-viet/quan-ly-danh-muc/deleteCustomers'>
+      <Route path='/huong-da-online/posts/category/deleteCustomers'>
         {({ history, match }) => (
           <CustomersDeleteDialog
             show={match != null}
             onHide={() => {
-              history.push('/huong-da-online/bai-viet/quan-ly-danh-muc');
+              history.push('/huong-da-online/posts/category');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/bai-viet/quan-ly-danh-muc/:id/delete'>
+      <Route path='/huong-da-online/posts/category/:id/delete'>
         {({ history, match }) => (
           <CustomerDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {
-              history.push('/huong-da-online/bai-viet/quan-ly-danh-muc');
+              history.push('/huong-da-online/posts/category');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/bai-viet/quan-ly-danh-muc/fetch'>
+      <Route path='/huong-da-online/posts/category/fetch'>
         {({ history, match }) => (
           <CustomersFetchDialog
             show={match != null}
             onHide={() => {
-              history.push('/huong-da-online/bai-viet/quan-ly-danh-muc');
+              history.push('/huong-da-online/posts/category');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/bai-viet/quan-ly-danh-muc/updateStatus'>
+      <Route path='/huong-da-online/posts/category/updateStatus'>
         {({ history, match }) => (
           <CustomersUpdateStateDialog
             show={match != null}
             onHide={() => {
-              history.push('/huong-da-online/bai-viet/quan-ly-danh-muc');
+              history.push('/huong-da-online/posts/category');
             }}
           />
         )}

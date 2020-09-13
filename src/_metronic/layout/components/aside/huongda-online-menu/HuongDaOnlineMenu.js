@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useHtmlClassService } from '../../../_core/MetronicLayout';
-import { HuongDaOnlineMenuList } from './HuongDaOnlineMenuList';
+import { HuongDaMenuListTest } from './HuongDaOnlineMenuList-test';
 
 export function HuongDaOnlineMenu({ isActive }) {
   const uiService = useHtmlClassService();
@@ -12,7 +12,6 @@ export function HuongDaOnlineMenu({ isActive }) {
       asideClassesFromConfig: uiService.getClasses('aside_menu', true),
     };
   }, [uiService]);
-
   return (
     <div className={`tab-pane fade ${isActive && 'show active'}`}>
       <div className='aside-menu-wrapper flex-column-fluid px-10 py-5'>
@@ -23,7 +22,7 @@ export function HuongDaOnlineMenu({ isActive }) {
           className={`aside-menu  min-h-lg-800px ${layoutProps.asideClassesFromConfig}`}
           {...layoutProps.asideMenuAttr}
         >
-          <HuongDaOnlineMenuList layoutProps={layoutProps} />
+          <HuongDaMenuListTest layoutProps={layoutProps} />
         </div>
         {/* end::Menu Container */}
       </div>

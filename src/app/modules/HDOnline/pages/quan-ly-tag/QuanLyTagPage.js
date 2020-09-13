@@ -12,86 +12,86 @@ import { CustomersCard } from './CustomersCard';
 export function QuanLyTagPage({ history }) {
   const customersUIEvents = {
     newCustomerButtonClick: () => {
-      history.push('/huong-da-online/bai-viet/quan-ly-tag/new');
+      history.push('/huong-da-online/posts/tags/new');
     },
     openEditCustomerDialog: (id) => {
-      history.push(`/huong-da-online/bai-viet/quan-ly-tag/${id}/edit`);
+      history.push(`/huong-da-online/posts/tags/${id}/edit`);
     },
     openDeleteCustomerDialog: (id) => {
-      history.push(`/huong-da-online/bai-viet/quan-ly-tag/${id}/delete`);
+      history.push(`/huong-da-online/posts/tags/${id}/delete`);
     },
     openDeleteCustomersDialog: () => {
-      history.push(`/huong-da-online/bai-viet/quan-ly-tag/deleteCustomers`);
+      history.push(`/huong-da-online/posts/tags/deleteCustomers`);
     },
     openFetchCustomersDialog: () => {
-      history.push(`/huong-da-online/bai-viet/quan-ly-tag/fetch`);
+      history.push(`/huong-da-online/posts/tags/fetch`);
     },
     openUpdateCustomersStatusDialog: () => {
-      history.push('/huong-da-online/bai-viet/quan-ly-tag/updateStatus');
+      history.push('/huong-da-online/posts/tags/updateStatus');
     },
   };
 
   return (
     <CustomersUIProvider customersUIEvents={customersUIEvents}>
       <CustomersLoadingDialog />
-      <Route path='/huong-da-online/bai-viet/quan-ly-tag/new'>
+      <Route path='/huong-da-online/posts/tags/new'>
         {({ history, match }) => (
           <CustomerEditDialog
             show={match != null}
             onHide={() => {
-              history.push('/huong-da-online/bai-viet/quan-ly-tag');
+              history.push('/huong-da-online/posts/tags');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/bai-viet/quan-ly-tag/:id/edit'>
+      <Route path='/huong-da-online/posts/tags/:id/edit'>
         {({ history, match }) => (
           <CustomerEditDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {
-              history.push('/huong-da-online/bai-viet/quan-ly-tag');
+              history.push('/huong-da-online/posts/tags');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/bai-viet/quan-ly-tag/deleteCustomers'>
+      <Route path='/huong-da-online/posts/tags/deleteCustomers'>
         {({ history, match }) => (
           <CustomersDeleteDialog
             show={match != null}
             onHide={() => {
-              history.push('/huong-da-online/bai-viet/quan-ly-tag');
+              history.push('/huong-da-online/posts/tags');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/bai-viet/quan-ly-tag/:id/delete'>
+      <Route path='/huong-da-online/posts/tags/:id/delete'>
         {({ history, match }) => (
           <CustomerDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {
-              history.push('/huong-da-online/bai-viet/quan-ly-tag');
+              history.push('/huong-da-online/posts/tags');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/bai-viet/quan-ly-tag/fetch'>
+      <Route path='/huong-da-online/posts/tags/fetch'>
         {({ history, match }) => (
           <CustomersFetchDialog
             show={match != null}
             onHide={() => {
-              history.push('/huong-da-online/bai-viet/quan-ly-tag');
+              history.push('/huong-da-online/posts/tags');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/bai-viet/quan-ly-tag/updateStatus'>
+      <Route path='/huong-da-online/posts/tags/updateStatus'>
         {({ history, match }) => (
           <CustomersUpdateStateDialog
             show={match != null}
             onHide={() => {
-              history.push('/huong-da-online/bai-viet/quan-ly-tag');
+              history.push('/huong-da-online/posts/tags');
             }}
           />
         )}
