@@ -19,3 +19,15 @@ export {
   SlugColumnFormatter
 }
 from './SlugColumnFormatter'
+export {
+  ProfileImageColumnFormatter
+}
+from './ProfileImageColumnFormatter'
+export {
+  FirstNameColumnFormatter
+}
+from './FirstNameColumnFormatter'
+export {
+  UserNameColumnFormatter
+}
+from './UserNameColumnFormatter'

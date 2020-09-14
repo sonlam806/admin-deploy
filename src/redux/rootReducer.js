@@ -21,6 +21,9 @@ import {
 import {
   postsSlice
 } from '../app/modules/HDOnline/_redux/posts/postsSlice';
+import {
+  technologySlice
+} from '../app/modules/HDOnline/_redux/technology/technologySlice'
 
 export const rootReducer = combineReducers({
   auth: auth.reducer,
@@ -28,7 +31,8 @@ export const rootReducer = combineReducers({
   products: productsSlice.reducer,
   remarks: remarksSlice.reducer,
   specifications: specificationsSlice.reducer,
-  posts: postsSlice.reducer
+  posts: postsSlice.reducer,
+  technology: technologySlice.reducer
 });
 
 export function* rootSaga() {

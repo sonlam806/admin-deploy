@@ -5,7 +5,7 @@ import mockProducts from "../../app/modules/ECommerce/__mocks__/mockProduct";
 import mockRemarks from "../../app/modules/ECommerce/__mocks__/mockRemark";
 import mockSpecifications from "../../app/modules/ECommerce/__mocks__/mockSpecification";
 import mockPosts from '../../app/modules/HDOnline/__mocks__/mockPost';
-
+import mockTechnology from '../../app/modules/HDOnline/__mocks__/mockTechnology'
 export default function mockAxios(axios) {
   const mock = new MockAdapter(axios, {
     delayResponse: 300
@@ -17,5 +17,6 @@ export default function mockAxios(axios) {
   mockRemarks(mock);
   mockSpecifications(mock);
   mockPosts(mock);
+  mockTechnology(mock)
   return mock;
 }

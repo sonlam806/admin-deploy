@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo } from 'react';
 import { Modal } from 'react-bootstrap';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../../_redux/customers/customersActions';
+// import * as actions from '../../../_redux/customers/customersActions';
+import * as actions from '../../../_redux/technology/technologyActions';
 import { CustomerEditDialogHeader } from './CustomerEditDialogHeader';
 import { CustomerEditForm } from './CustomerEditForm';
 import { useCustomersUIContext } from '../CustomersUIContext';
@@ -19,25 +20,25 @@ export function CustomerEditDialog({ id, show, onHide }) {
   const dispatch = useDispatch();
   const { actionsLoading, customerForEdit } = useSelector(
     (state) => ({
-      actionsLoading: state.customers.actionsLoading,
-      customerForEdit: state.customers.customerForEdit,
+      actionsLoading: state.technology.actionsLoading,
+      customerForEdit: state.technology.customerForEdit,
     }),
     shallowEqual
   );
 
   useEffect(() => {
     // server call for getting Customer by id
-    dispatch(actions.fetchCustomer(id));
+    dispatch(actions.fetchProduct(id));
   }, [id, dispatch]);
 
   // server request for saving customer
   const saveCustomer = (customer) => {
     if (!id) {
       // server request for creating customer
-      dispatch(actions.createCustomer(customer)).then(() => onHide());
+      dispatch(actions.createProduct(customer)).then(() => onHide());
     } else {
       // server request for updating customer
-      dispatch(actions.updateCustomer(customer)).then(() => onHide());
+      dispatch(actions.updateProduct(customer)).then(() => onHide());
     }
   };
 

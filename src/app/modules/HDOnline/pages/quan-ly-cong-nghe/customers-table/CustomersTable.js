@@ -7,7 +7,8 @@ import paginationFactory, {
   PaginationProvider,
 } from 'react-bootstrap-table2-paginator';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../../_redux/customers/customersActions';
+// import * as actions from '../../../_redux/customers/customersActions';
+import * as actions from '../../../_redux/technology/technologyActions';
 import {
   getSelectRow,
   getHandlerTableChange,
@@ -37,7 +38,7 @@ export function CustomersTable() {
 
   // Getting curret state of customers list from store (Redux)
   const { currentState } = useSelector(
-    (state) => ({ currentState: state.customers }),
+    (state) => ({ currentState: state.posts }),
     shallowEqual
   );
   const { totalCount, entities, listLoading } = currentState;
@@ -48,7 +49,7 @@ export function CustomersTable() {
     // clear selections list
     customersUIProps.setIds([]);
     // server call by queryParams
-    dispatch(actions.fetchCustomers(customersUIProps.queryParams));
+    dispatch(actions.fetchProducts(customersUIProps.queryParams));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [customersUIProps.queryParams, dispatch]);
   // Table columns
@@ -61,20 +62,28 @@ export function CustomersTable() {
       headerSortingClasses,
     },
     {
-      dataField: 'firstName',
+      dataField: 'profileImage',
+      text: 'Avatar',
+      sort: true,
+      sortCaret: sortCaret,
+      headerSortingClasses,
+      formatter: columnFormatters.ProfileImageColumnFormatter,
+    },
+    {
+      dataField: 'techName',
       text: 'Tên',
       sort: true,
       sortCaret: sortCaret,
       headerSortingClasses,
-      // formatter: columnFormatters.TagNameColumnFormatter,
+      // formatter: columnFormatters.FirstNameColumnFormatter,
     },
     {
-      dataField: 'userName',
-      text: 'slug',
+      dataField: 'slug',
+      text: 'Slug',
       sort: true,
       sortCaret: sortCaret,
       headerSortingClasses,
-      // formatter: columnFormatters.SlugColumnFormatter,
+      // formatter: columnFormatters.UserNameColumnFormatter,
     },
 
     {
