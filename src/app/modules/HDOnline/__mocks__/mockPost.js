@@ -14,7 +14,8 @@ export default function mockPost(mock) {
         slug = "Y-Solowarm",
         language = "Catalan",
         createDate = "03/03/2020",
-        owner = "Darbee Giggie"
+        owner = "Darbee Giggie",
+        species = "Business"
     } = product;
 
     const id = generateProductId();
@@ -25,7 +26,8 @@ export default function mockPost(mock) {
       slug,
       language,
       createDate,
-      owner
+      owner,
+      species
     };
     postTableMock.push(newPost);
     return [200, {

@@ -1,35 +1,29 @@
-// Form is based on Formik
-// Data validation is based on Yup
-// Please, be familiar with article first:
-// https://hackernoon.com/react-form-validation-with-formik-and-yup-8b76bda62e10
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import {
+  DatePickerField,
   Input,
   Select,
-  DatePickerField,
 } from '../../../../../../_metronic/_partials/controls';
 
+// Fake Post Item
+import postTableMock from '../../../__mocks__/postTableMock';
 // Validation schema
 const CustomerEditSchema = Yup.object().shape({
-  // firstName: Yup.string()
-  //   .min(3, 'Minimum 3 symbols')
-  //   .max(50, 'Maximum 50 symbols')
-  //   .required('Firstname is required'),
-  lastName: Yup.string()
+  postName: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
-    .required('Lastname is required'),
-  email: Yup.string()
-    .email('Invalid email')
-    .required('Email is required'),
-  userName: Yup.string().required('Username is required'),
-  dateOfBbirth: Yup.mixed()
-    .nullable(false)
-    .required('Date of Birth is required'),
-  ipAddress: Yup.string().required('IP Address is required'),
+    .required('Phải nhập tên bài viết'),
+  slug: Yup.string()
+    .min(3, 'Minimum 3 symbols')
+    .max(50, 'Maximum 50 symbols')
+    .required('Phải nhập slug'),
+  language: Yup.string()
+    .min(3, 'Minimum 3 symbols')
+    .max(50, 'Maximum 50 symbols')
+    .required('Phải nhập ngôn ngữ'),
 });
 
 export function CustomerEditForm({
@@ -46,6 +40,7 @@ export function CustomerEditForm({
         validationSchema={CustomerEditSchema}
         onSubmit={(values) => {
           saveCustomer(values);
+          postTableMock.push(values);
         }}
       >
         {({ handleSubmit }) => (
@@ -58,77 +53,66 @@ export function CustomerEditForm({
               )}
               <Form className='form form-label-right'>
                 <div className='form-group row'>
-                  {/* First Name */}
+                  {/* Profile Image */}
                   <div className='col-lg-4'>
                     <Field
-                      name='firstName'
+                      name='profileImage'
                       component={Input}
-                      placeholder='First Name'
-                      label='First Name'
                       value='https://picsum.photos/50'
+                      placeholder='Ảnh đại diện'
+                      label='Ảnh đại diện'
                     />
                   </div>
-                  {/* Last Name */}
+                  {/* Post Name */}
                   <div className='col-lg-4'>
                     <Field
-                      name='lastName'
+                      name='postName'
                       component={Input}
-                      placeholder='Last Name'
-                      label='Last Name'
+                      placeholder='Tên bài viết'
+                      label='Tên bài viết'
                     />
                   </div>
-                  {/* Login */}
+                  {/* Slug */}
                   <div className='col-lg-4'>
                     <Field
-                      name='userName'
+                      name='slug'
                       component={Input}
-                      placeholder='Login'
-                      label='Login'
+                      placeholder='Slug'
+                      label='Slug'
                     />
                   </div>
                 </div>
-                {/* Email */}
+                {/* Language */}
                 <div className='form-group row'>
                   <div className='col-lg-4'>
                     <Field
-                      type='email'
-                      name='email'
+                      name='language'
                       component={Input}
-                      placeholder='Email'
-                      label='Email'
+                      placeholder='Ngôn ngữ'
+                      label='Ngôn ngữ'
                     />
                   </div>
-                  {/* Date of birth */}
+                  {/* createDate */}
                   <div className='col-lg-4'>
                     <DatePickerField
-                      name='dateOfBbirth'
-                      label='Date of Birth'
-                    />
-                  </div>
-                  {/* IP Address */}
-                  <div className='col-lg-4'>
-                    <Field
-                      name='ipAddress'
-                      component={Input}
-                      placeholder='IP Address'
-                      label='IP Address'
-                      customFeedbackLabel="We'll never share customer IP Address with anyone else"
+                      name='createDate'
+                      label='Ngày tạo bài viết'
                     />
                   </div>
                 </div>
                 <div className='form-group row'>
-                  {/* Gender */}
+                  {/* Owner */}
                   <div className='col-lg-4'>
-                    <Select name='Gender' label='Gender'>
-                      <option value='Female'>Female</option>
-                      <option value='Male'>Male</option>
+                    <Select name='owner' label='Người tạo'>
+                      <option value='Admin'>Admin</option>
+                      <option value='User'>User</option>
                     </Select>
                   </div>
-                  {/* Type */}
+                  {/* Species */}
                   <div className='col-lg-4'>
-                    <Select name='type' label='Type'>
-                      <option value='0'>Business</option>
-                      <option value='1'>Individual</option>
+                    <Select name='species' label='Chuyên mục'>
+                      <option value='Business'>Business</option>
+                      <option value='Technology'>Technology</option>
                     </Select>
                   </div>
                 </div>
@@ -140,7 +124,7 @@ export function CustomerEditForm({
                 onClick={onHide}
                 className='btn btn-light btn-elevate'
               >
-                Cancel
+                Hủy
               </button>
               <> </>
               <button
@@ -148,7 +132,7 @@ export function CustomerEditForm({
                 onClick={() => handleSubmit()}
                 className='btn btn-primary btn-elevate'
               >
-                Save
+                Lưu
               </button>
             </Modal.Footer>
           </>

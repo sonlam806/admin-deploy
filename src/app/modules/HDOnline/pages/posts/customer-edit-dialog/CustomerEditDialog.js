@@ -7,7 +7,6 @@ import { CustomerEditForm } from './CustomerEditForm';
 import { useCustomersUIContext } from '../CustomersUIContext';
 
 export function CustomerEditDialog({ id, show, onHide }) {
-  console.log('add new');
   // Customers UI Context
   const customersUIContext = useCustomersUIContext();
   const customersUIProps = useMemo(() => {
@@ -35,6 +34,7 @@ export function CustomerEditDialog({ id, show, onHide }) {
   const saveCustomer = (customer) => {
     if (!id) {
       // server request for creating customer
+      console.log('customeer', customer);
       dispatch(actions.createProduct(customer)).then(() => onHide());
     } else {
       // server request for updating customer
