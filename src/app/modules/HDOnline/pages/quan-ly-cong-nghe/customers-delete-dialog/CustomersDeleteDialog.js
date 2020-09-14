@@ -1,15 +1,16 @@
 import React, { useEffect, useMemo } from 'react';
 import { Modal } from 'react-bootstrap';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { ModalProgressBar } from '../../../../../../_metronic/_partials/controls';
 import * as actions from '../../../_redux/customers/customersActions';
 import { useCustomersUIContext } from '../CustomersUIContext';
+import { ModalProgressBar } from '../../../../../../_metronic/_partials/controls';
 
-export function CustomerDeleteDialog({ id, show, onHide }) {
+export function CustomersDeleteDialog({ show, onHide }) {
   // Customers UI Context
   const customersUIContext = useCustomersUIContext();
   const customersUIProps = useMemo(() => {
     return {
+      ids: customersUIContext.ids,
       setIds: customersUIContext.setIds,
       queryParams: customersUIContext.queryParams,
     };
@@ -22,26 +23,29 @@ export function CustomerDeleteDialog({ id, show, onHide }) {
     shallowEqual
   );
 
-  // if !id we should close modal
+  // if customers weren't selected we should close modal
   useEffect(() => {
-    if (!id) {
+    if (!customersUIProps.ids || customersUIProps.ids.length === 0) {
       onHide();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, [customersUIProps.ids]);
 
   // looking for loading/dispatch
   useEffect(() => {}, [isLoading, dispatch]);
 
-  const deleteCustomer = () => {
-    // server request for deleting customer by id
-    dispatch(actions.deleteCustomer(id)).then(() => {
+  const deleteCustomers = () => {
+    // server request for deleting customer by selected ids
+    dispatch(actions.deleteCustomers(customersUIProps.ids)).then(() => {
       // refresh list after deletion
-      dispatch(actions.fetchCustomers(customersUIProps.queryParams));
-      // clear selections list
-      customersUIProps.setIds([]);
-      // closing delete modal
-      onHide();
+      dispatch(actions.fetchCustomers(customersUIProps.queryParams)).then(
+        () => {
+          // clear selections list
+          customersUIProps.setIds([]);
+          // closing delete modal
+          onHide();
+        }
+      );
     });
   };
 
@@ -55,11 +59,15 @@ export function CustomerDeleteDialog({ id, show, onHide }) {
       {isLoading && <ModalProgressBar />}
       {/*end::Loading*/}
       <Modal.Header closeButton>
-        <Modal.Title id='example-modal-sizes-title-lg'>Xóa tag</Modal.Title>
+        <Modal.Title id='example-modal-sizes-title-lg'>
+          Xóa nhiều công nghệ
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && <span>Bạn có chắc chắn muốn xóa tag này không?</span>}
-        {isLoading && <span>Đang xóa tag...</span>}
+        {!isLoading && (
+          <span>Bạn có chắc chắn muốn xóa những công nghệ này không?</span>
+        )}
+        {isLoading && <span>Đang xóa công nghệ...</span>}
       </Modal.Body>
       <Modal.Footer>
         <div>
@@ -73,7 +81,7 @@ export function CustomerDeleteDialog({ id, show, onHide }) {
           <> </>
           <button
             type='button'
-            onClick={deleteCustomer}
+            onClick={deleteCustomers}
             className='btn btn-danger btn-elevate'
           >
             Xóa

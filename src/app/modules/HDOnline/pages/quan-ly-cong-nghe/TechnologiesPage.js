@@ -9,89 +9,89 @@ import { CustomersUpdateStateDialog } from './customers-update-status-dialog/Cus
 import { CustomersUIProvider } from './CustomersUIContext';
 import { CustomersCard } from './CustomersCard';
 
-export function PostsPage({ history }) {
+export function TechnologiesPage({ history }) {
   const customersUIEvents = {
     newCustomerButtonClick: () => {
-      history.push('/huong-da-online/posts/post/new');
+      history.push('/huong-da-online/projects/technology/new');
     },
     openEditCustomerDialog: (id) => {
-      history.push(`/huong-da-online/posts/post/${id}/edit`);
+      history.push(`/huong-da-online/projects/technology/${id}/edit`);
     },
     openDeleteCustomerDialog: (id) => {
-      history.push(`/huong-da-online/posts/post/${id}/delete`);
+      history.push(`/huong-da-online/projects/technology/${id}/delete`);
     },
     openDeleteCustomersDialog: () => {
-      history.push(`/huong-da-online/posts/post/deleteCustomers`);
+      history.push(`/huong-da-online/projects/technology/deleteCustomers`);
     },
     openFetchCustomersDialog: () => {
-      history.push(`/huong-da-online/posts/post/fetch`);
+      history.push(`/huong-da-online/projects/technology/fetch`);
     },
     openUpdateCustomersStatusDialog: () => {
-      history.push('/huong-da-online/posts/post/updateStatus');
+      history.push('/huong-da-online/projects/technology/updateStatus');
     },
   };
 
   return (
     <CustomersUIProvider customersUIEvents={customersUIEvents}>
       <CustomersLoadingDialog />
-      <Route path='/huong-da-online/posts/post/new'>
+      <Route path='/huong-da-online/projects/technology/new'>
         {({ history, match }) => (
           <CustomerEditDialog
             show={match != null}
             onHide={() => {
-              history.push('/huong-da-online/posts/post');
+              history.push('/huong-da-online/projects/technology');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/posts/post/:id/edit'>
+      <Route path='/huong-da-online/projects/technology/:id/edit'>
         {({ history, match }) => (
           <CustomerEditDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {
-              history.push('/huong-da-online/posts/post');
+              history.push('/huong-da-online/projects/technology');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/posts/post/deleteCustomers'>
+      <Route path='/huong-da-online/projects/technology/deleteCustomers'>
         {({ history, match }) => (
           <CustomersDeleteDialog
             show={match != null}
             onHide={() => {
-              history.push('/huong-da-online/posts/post');
+              history.push('/huong-da-online/projects/technology');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/posts/post/:id/delete'>
+      <Route path='/huong-da-online/projects/technology/:id/delete'>
         {({ history, match }) => (
           <CustomerDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {
-              history.push('/huong-da-online/posts/post');
+              history.push('/huong-da-online/projects/technology');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/posts/post/fetch'>
+      <Route path='/huong-da-online/projects/technology/fetch'>
         {({ history, match }) => (
           <CustomersFetchDialog
             show={match != null}
             onHide={() => {
-              history.push('/huong-da-online/posts/post');
+              history.push('/huong-da-online/projects/technology');
             }}
           />
         )}
       </Route>
-      <Route path='/huong-da-online/posts/post/updateStatus'>
+      <Route path='/huong-da-online/projects/technology/updateStatus'>
         {({ history, match }) => (
           <CustomersUpdateStateDialog
             show={match != null}
             onHide={() => {
-              history.push('/huong-da-online/posts/post');
+              history.push('/huong-da-online/projects/technology');
             }}
           />
         )}

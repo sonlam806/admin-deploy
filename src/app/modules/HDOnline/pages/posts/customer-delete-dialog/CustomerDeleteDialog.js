@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { Modal } from 'react-bootstrap';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { ModalProgressBar } from '../../../../../../_metronic/_partials/controls';
-import * as actions from '../../../_redux/customers/customersActions';
+import * as actions from '../../../_redux/posts/postsActions';
 import { useCustomersUIContext } from '../CustomersUIContext';
 
 export function CustomerDeleteDialog({ id, show, onHide }) {
@@ -35,9 +35,9 @@ export function CustomerDeleteDialog({ id, show, onHide }) {
 
   const deleteCustomer = () => {
     // server request for deleting customer by id
-    dispatch(actions.deleteCustomer(id)).then(() => {
+    dispatch(actions.deleteProduct(id)).then(() => {
       // refresh list after deletion
-      dispatch(actions.fetchCustomers(customersUIProps.queryParams));
+      dispatch(actions.fetchProducts(customersUIProps.queryParams));
       // clear selections list
       customersUIProps.setIds([]);
       // closing delete modal
@@ -55,11 +55,15 @@ export function CustomerDeleteDialog({ id, show, onHide }) {
       {isLoading && <ModalProgressBar />}
       {/*end::Loading*/}
       <Modal.Header closeButton>
-        <Modal.Title id='example-modal-sizes-title-lg'>Xóa tag</Modal.Title>
+        <Modal.Title id='example-modal-sizes-title-lg'>
+          Xóa bài viết
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && <span>Bạn có chắc chắn muốn xóa tag này không?</span>}
-        {isLoading && <span>Đang xóa tag...</span>}
+        {!isLoading && (
+          <span>Bạn có chắc chắn muốn xóa bài viết này không?</span>
+        )}
+        {isLoading && <span>Đang xóa bài viết...</span>}
       </Modal.Body>
       <Modal.Footer>
         <div>

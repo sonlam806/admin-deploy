@@ -55,11 +55,15 @@ export function CustomerDeleteDialog({ id, show, onHide }) {
       {isLoading && <ModalProgressBar />}
       {/*end::Loading*/}
       <Modal.Header closeButton>
-        <Modal.Title id='example-modal-sizes-title-lg'>Xóa tag</Modal.Title>
+        <Modal.Title id='example-modal-sizes-title-lg'>
+          Xóa công nghệ
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && <span>Bạn có chắc chắn muốn xóa tag này không?</span>}
-        {isLoading && <span>Đang xóa tag...</span>}
+        {!isLoading && (
+          <span>Bạn có chắc chắn muốn xóa công nghệ này không?</span>
+        )}
+        {isLoading && <span>Đang xóa công nghệ...</span>}
       </Modal.Body>
       <Modal.Footer>
         <div>

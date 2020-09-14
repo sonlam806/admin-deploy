@@ -1,12 +1,12 @@
 import * as requestFromServer from "./postsCrud";
 import {
-  productsSlice,
+  postsSlice,
   callTypes
 } from "./postsSlice";
 
 const {
   actions
-} = productsSlice;
+} = postsSlice;
 
 export const fetchProducts = queryParams => dispatch => {
   dispatch(actions.startCall({

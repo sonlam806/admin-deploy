@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useHtmlClassService } from '../../../_core/MetronicLayout';
-import { HuongDaMenuListTest } from './HuongDaOnlineMenuList-test';
+import { HuongDaOnlineMenuList } from './HuongDaOnlineMenuList';
 
 export function HuongDaOnlineMenu({ isActive }) {
   const uiService = useHtmlClassService();
@@ -22,7 +22,7 @@ export function HuongDaOnlineMenu({ isActive }) {
           className={`aside-menu  min-h-lg-800px ${layoutProps.asideClassesFromConfig}`}
           {...layoutProps.asideMenuAttr}
         >
-          <HuongDaMenuListTest layoutProps={layoutProps} />
+          <HuongDaOnlineMenuList layoutProps={layoutProps} />
         </div>
         {/* end::Menu Container */}
       </div>

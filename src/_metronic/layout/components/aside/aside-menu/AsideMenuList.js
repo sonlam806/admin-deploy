@@ -6,7 +6,6 @@ import SVG from 'react-inlinesvg';
 import { toAbsoluteUrl, checkIsActive } from '../../../../_helpers';
 
 export function AsideMenuList({ layoutProps }) {
-  console.log('layoutProps', layoutProps);
   const location = useLocation();
   const getMenuItemActive = (url, hasSubmenu = false) => {
     return checkIsActive(location, url)

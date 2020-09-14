@@ -12,6 +12,10 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
       ? ` ${!hasSubmenu && 'menu-item-active'} menu-item-open `
       : '';
   };
+  const handleClick = (event, container) => {
+    event.preventDefault();
+    console.log('clicked', container);
+  };
 
   return (
     <>
@@ -40,6 +44,7 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
           )}`}
           aria-haspopup='true'
           data-menu-toggle='hover'
+          onClick={(e) => handleClick(e)}
         >
           <NavLink
             className='menu-link menu-toggle'
@@ -127,13 +132,16 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
         {/*begin::1 Level*/}
         <li
           className={`menu-item menu-item-submenu ${getMenuItemActive(
-            '/google-material',
+            '/huong-da-online',
             true
           )}`}
           aria-haspopup='true'
           data-menu-toggle='hover'
         >
-          <NavLink className='menu-link menu-toggle' to='/google-material'>
+          <NavLink
+            className='menu-link menu-toggle'
+            to='/huong-da-online/projects'
+          >
             <span className='svg-icon menu-icon'>
               <SVG
                 src={toAbsoluteUrl('/media/svg/icons/Shopping/Settings.svg')}
@@ -157,13 +165,13 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                 {/*begin::2 Level*/}
                 <li
                   className={`menu-item ${getMenuItemActive(
-                    '/google-material/layout/grid'
+                    '/huong-da-online/projects/project'
                   )}`}
                   aria-haspopup='true'
                 >
                   <NavLink
                     className='menu-link'
-                    to='/google-material/layout/grid'
+                    to='/huong-da-online/projects/project'
                   >
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />
@@ -175,13 +183,13 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                 {/*begin::2 Level*/}
                 <li
                   className={`menu-item ${getMenuItemActive(
-                    '/google-material/navigation/breadcrumbs'
+                    '/huong-da-online/projects/technology'
                   )}`}
                   aria-haspopup='true'
                 >
                   <NavLink
                     className='menu-link'
-                    to='/google-material/navigation/breadcrumbs'
+                    to='/huong-da-online/projects/technology'
                   >
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />
@@ -193,13 +201,13 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                 {/*begin::2 Level*/}
                 <li
                   className={`menu-item ${getMenuItemActive(
-                    '/google-material/inputs/autocomplete'
+                    '/huong-da-online/projects/category'
                   )}`}
                   aria-haspopup='true'
                 >
                   <NavLink
                     className='menu-link'
-                    to='/google-material/inputs/autocomplete'
+                    to='/huong-da-online/projects/category'
                   >
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />
@@ -211,13 +219,13 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                 {/*begin::2 Level*/}
                 <li
                   className={`menu-item ${getMenuItemActive(
-                    '/google-material/inputs/buttons'
+                    '/huong-da-online/projects/tag'
                   )}`}
                   aria-haspopup='true'
                 >
                   <NavLink
                     className='menu-link'
-                    to='/google-material/inputs/buttons'
+                    to='/huong-da-online/projects/tag'
                   >
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />

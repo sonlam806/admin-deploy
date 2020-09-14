@@ -1,4 +1,6 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {
+  createSlice
+} from "@reduxjs/toolkit";
 
 const initialProductsState = {
   listLoading: false,
@@ -13,7 +15,7 @@ export const callTypes = {
   action: "action"
 };
 
-export const productsSlice = createSlice({
+export const postsSlice = createSlice({
   name: "products",
   initialState: initialProductsState,
   reducers: {
@@ -41,7 +43,10 @@ export const productsSlice = createSlice({
     },
     // findProducts
     productsFetched: (state, action) => {
-      const { totalCount, entities } = action.payload;
+      const {
+        totalCount,
+        entities
+      } = action.payload;
       state.listLoading = false;
       state.error = null;
       state.entities = entities;
@@ -82,7 +87,10 @@ export const productsSlice = createSlice({
     productsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
-      const { ids, status } = action.payload;
+      const {
+        ids,
+        status
+      } = action.payload;
       state.entities = state.entities.map(entity => {
         if (ids.findIndex(id => id === entity.id) > -1) {
           entity.status = status;

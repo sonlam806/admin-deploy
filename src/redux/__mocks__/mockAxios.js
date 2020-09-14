@@ -4,15 +4,18 @@ import mockCustomers from "../../app/modules/ECommerce/__mocks__/mockCustomer";
 import mockProducts from "../../app/modules/ECommerce/__mocks__/mockProduct";
 import mockRemarks from "../../app/modules/ECommerce/__mocks__/mockRemark";
 import mockSpecifications from "../../app/modules/ECommerce/__mocks__/mockSpecification";
+import mockPosts from '../../app/modules/HDOnline/__mocks__/mockPost';
 
 export default function mockAxios(axios) {
-  const mock = new MockAdapter(axios, { delayResponse: 300 });
+  const mock = new MockAdapter(axios, {
+    delayResponse: 300
+  });
 
   mockAuth(mock);
   mockCustomers(mock);
   mockProducts(mock);
   mockRemarks(mock);
   mockSpecifications(mock);
-
+  mockPosts(mock);
   return mock;
 }

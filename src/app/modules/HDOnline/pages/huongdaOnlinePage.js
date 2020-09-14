@@ -7,6 +7,7 @@ import { LayoutSplashScreen, ContentRoute } from '../../../../_metronic/layout';
 import { PostsPage } from './posts/PostsPage';
 import { QuanLyDanhMucPage } from './quan-ly-danh-muc/QuanLyDanhMucPage';
 import { QuanLyTagPage } from './quan-ly-tag/QuanLyTagPage';
+import { TechnologiesPage } from './quan-ly-cong-nghe/TechnologiesPage';
 
 export default function huongdaOnlinePage() {
   return (
@@ -17,7 +18,7 @@ export default function huongdaOnlinePage() {
           /* Redirect from eCommerce root URL to /customers */
           <Redirect
             exact={true}
-            from='/huong-da-online/posts'
+            from='/huong-da-online/'
             to='/huong-da-online/posts/post'
           />
         }{' '}
@@ -36,6 +37,11 @@ export default function huongdaOnlinePage() {
         <ContentRoute
           path='/huong-da-online/posts/category'
           component={QuanLyDanhMucPage}
+        />{' '}
+        {/* Projects Page */}
+        <ContentRoute
+          path='/huong-da-online/projects/technology'
+          component={TechnologiesPage}
         />{' '}
         <ContentRoute
           path='/huong-da-online/products/new'
