@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo } from 'react';
 import { Modal } from 'react-bootstrap';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-// import * as actions from '../../../_redux/customers/customersActions';
 import * as actions from '../../../_redux/technology/technologyActions';
+
 import { CustomerEditDialogHeader } from './CustomerEditDialogHeader';
 import { CustomerEditForm } from './CustomerEditForm';
 import { useCustomersUIContext } from '../CustomersUIContext';
@@ -18,10 +18,10 @@ export function CustomerEditDialog({ id, show, onHide }) {
 
   // Customers Redux state
   const dispatch = useDispatch();
-  const { actionsLoading, customerForEdit } = useSelector(
+  const { actionsLoading, productForEdit } = useSelector(
     (state) => ({
       actionsLoading: state.technology.actionsLoading,
-      customerForEdit: state.technology.customerForEdit,
+      productForEdit: state.technology.productForEdit,
     }),
     shallowEqual
   );
@@ -53,7 +53,7 @@ export function CustomerEditDialog({ id, show, onHide }) {
       <CustomerEditForm
         saveCustomer={saveCustomer}
         actionsLoading={actionsLoading}
-        customer={customerForEdit || customersUIProps.initCustomer}
+        customer={productForEdit || customersUIProps.initCustomer}
         onHide={onHide}
       />
     </Modal>

@@ -62,9 +62,9 @@ export default function mockTechnology(mock) {
     });
     return [200];
   });
-
-  mock.onGet(/api\/posts\/\d+/).reply(config => {
-    const id = config.url.match(/api\/products\/(\d+)/)[1];
+  // Get technology post for edit 
+  mock.onGet(/api\/technology\/\d+/).reply(config => {
+    const id = config.url.match(/api\/technology\/(\d+)/)[1];
     const post = technologyTableMock.find(el => el.id === +id);
     if (!post) {
       return [400];
@@ -72,13 +72,20 @@ export default function mockTechnology(mock) {
 
     return [200, post];
   });
-
+  // Route for update techName, slug
   mock.onPut(/api\/technology\/\d+/).reply(config => {
-    const id = config.url.match(/api\/posts\/(\d+)/)[1];
+    const id = config.url.match(/api\/technology\/(\d+)/)[1];
     const {
       post
     } = JSON.parse(config.data);
     const index = technologyTableMock.findIndex(el => el.id === +id);
+    // Fix if index === 0 is not update
+    if (index === 0) {
+      technologyTableMock[0] = {
+        ...post
+      }
+      return [200];
+    }
     if (!index) {
       return [400];
     }

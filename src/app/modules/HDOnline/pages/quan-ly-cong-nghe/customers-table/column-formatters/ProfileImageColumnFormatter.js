@@ -3,6 +3,5 @@
 import React from 'react';
 
 export function ProfileImageColumnFormatter(cellContent, row) {
-  console.log('row', row);
   return <img src={row.profileImage} alt={row.techName} />;
 }

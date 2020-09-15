@@ -5,10 +5,10 @@ import { ModalProgressBar } from '../../../../../../_metronic/_partials/controls
 
 export function CustomerEditDialogHeader({ id }) {
   // Customers Redux state
-  const { customerForEdit, actionsLoading } = useSelector(
+  const { productForEdit, actionsLoading } = useSelector(
     (state) => ({
-      customerForEdit: state.customers.customerForEdit,
-      actionsLoading: state.customers.actionsLoading,
+      productForEdit: state.technology.productForEdit,
+      actionsLoading: state.technology.actionsLoading,
     }),
     shallowEqual
   );
@@ -17,13 +17,13 @@ export function CustomerEditDialogHeader({ id }) {
   // Title couting
   useEffect(() => {
     let _title = id ? '' : 'Thêm công nghệ mới';
-    if (customerForEdit && id) {
-      _title = `Chỉnh sửa '${customerForEdit.firstName} ${customerForEdit.lastName}'`;
+    if (productForEdit && id) {
+      _title = `Chỉnh sửa công nghệ`;
     }
 
     setTitle(_title);
     // eslint-disable-next-line
-  }, [customerForEdit, actionsLoading]);
+  }, [productForEdit, actionsLoading]);
 
   return (
     <>
