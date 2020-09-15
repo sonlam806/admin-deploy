@@ -4,11 +4,12 @@ import { CustomersPage } from './customers/CustomersPage';
 import { ProductsPage } from './products/ProductsPage';
 import { ProductEdit } from './products/product-edit/ProductEdit';
 import { LayoutSplashScreen, ContentRoute } from '../../../../_metronic/layout';
-import { PostsPage } from './posts/PostsPage';
+import { PostsPage } from './quan-ly-posts-post/PostsPage';
 import { QuanLyDanhMucPage } from './quan-ly-danh-muc/QuanLyDanhMucPage';
-import { QuanLyTagPage } from './quan-ly-tag/QuanLyTagPage';
+import { QuanLyTagPage } from './quan-ly-posts-tag/QuanLyTagPage';
 import { TechnologiesPage } from './quan-ly-cong-nghe/TechnologiesPage';
-import { QuanLyProjectsTagPage } from './quan-ly-project-tags/QuanLyProjectsTagPage';
+import { ProjectsTagPage } from './quan-ly-project-tags/ProjectsTagPage';
+import { ProjectsCategoryPage } from './quan-ly-project-category/ProjectsCategoryPage';
 
 export default function huongdaOnlinePage() {
   return (
@@ -45,8 +46,13 @@ export default function huongdaOnlinePage() {
         />
         <ContentRoute
           path='/huong-da-online/projects/tags'
-          component={QuanLyProjectsTagPage}
+          component={ProjectsTagPage}
         />
+        <ContentRoute
+          path='/huong-da-online/projects/category'
+          component={ProjectsCategoryPage}
+        />
+
         {/* Product Page */}
         <ContentRoute
           path='/huong-da-online/products/new'

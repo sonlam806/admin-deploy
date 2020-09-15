@@ -7,6 +7,7 @@ import mockSpecifications from '../../app/modules/ECommerce/__mocks__/mockSpecif
 import mockPosts from '../../app/modules/HDOnline/__mocks__/mockPost';
 import mockTechnology from '../../app/modules/HDOnline/__mocks__/mockTechnology';
 import mockTags from '../../app/modules/HDOnline/__mocks__/mockTag';
+import mockProjectCategory from '../../app/modules/HDOnline/__mocks__/mockProjectCategory';
 
 export default function mockAxios(axios) {
   const mock = new MockAdapter(axios, {
@@ -21,5 +22,7 @@ export default function mockAxios(axios) {
   mockPosts(mock);
   mockTechnology(mock);
   mockTags(mock);
+  mockProjectCategory(mock);
+
   return mock;
 }
