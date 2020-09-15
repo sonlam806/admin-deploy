@@ -8,12 +8,12 @@ import { PostsPage } from './posts/PostsPage';
 import { QuanLyDanhMucPage } from './quan-ly-danh-muc/QuanLyDanhMucPage';
 import { QuanLyTagPage } from './quan-ly-tag/QuanLyTagPage';
 import { TechnologiesPage } from './quan-ly-cong-nghe/TechnologiesPage';
+import { QuanLyProjectsTagPage } from './quan-ly-project-tags/QuanLyProjectsTagPage';
 
 export default function huongdaOnlinePage() {
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
-        {' '}
         {
           /* Redirect from eCommerce root URL to /customers */
           <Redirect
@@ -21,41 +21,46 @@ export default function huongdaOnlinePage() {
             from='/huong-da-online/'
             to='/huong-da-online/posts/post'
           />
-        }{' '}
+        }
         <ContentRoute
           path='/huong-da-online/customers'
           component={CustomersPage}
-        />{' '}
+        />
         <ContentRoute
           path='/huong-da-online/posts/post'
           component={PostsPage}
-        />{' '}
+        />
         <ContentRoute
           path='/huong-da-online/posts/tags'
           component={QuanLyTagPage}
-        />{' '}
+        />
         <ContentRoute
           path='/huong-da-online/posts/category'
           component={QuanLyDanhMucPage}
-        />{' '}
+        />
         {/* Projects Page */}
         <ContentRoute
           path='/huong-da-online/projects/technology'
           component={TechnologiesPage}
-        />{' '}
+        />
+        <ContentRoute
+          path='/huong-da-online/projects/tags'
+          component={QuanLyProjectsTagPage}
+        />
+        {/* Product Page */}
         <ContentRoute
           path='/huong-da-online/products/new'
           component={ProductEdit}
-        />{' '}
+        />
         <ContentRoute
           path='/huong-da-online/products/:id/edit'
           component={ProductEdit}
-        />{' '}
+        />
         <ContentRoute
           path='/huong-da-online/products'
           component={ProductsPage}
-        />{' '}
-      </Switch>{' '}
+        />
+      </Switch>
     </Suspense>
   );
 }

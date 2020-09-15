@@ -219,13 +219,13 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
                 {/*begin::2 Level*/}
                 <li
                   className={`menu-item ${getMenuItemActive(
-                    '/huong-da-online/projects/tag'
+                    '/huong-da-online/projects/tags'
                   )}`}
                   aria-haspopup='true'
                 >
                   <NavLink
                     className='menu-link'
-                    to='/huong-da-online/projects/tag'
+                    to='/huong-da-online/projects/tags'
                   >
                     <i className='menu-bullet menu-bullet-dot'>
                       <span />
