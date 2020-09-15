@@ -9,6 +9,7 @@ const {
 } = categorySlice;
 
 export const fetchCategories = queryParams => dispatch => {
+  console.log('run fetchCategories')
   dispatch(actions.startCall({
     callType: callTypes.list
   }));
@@ -34,9 +35,10 @@ export const fetchCategories = queryParams => dispatch => {
 };
 
 export const fetchCategory = id => dispatch => {
+  console.log('run fetchCategory')
   if (!id) {
     return dispatch(actions.categoryFetched({
-      tagForEdit: undefined
+      categoryForEdit: undefined
     }));
   }
 

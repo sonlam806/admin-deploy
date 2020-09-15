@@ -6,7 +6,7 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { Input } from '../../../../../../_metronic/_partials/controls';
+import { Input, Select } from '../../../../../../_metronic/_partials/controls';
 
 // Validation schema
 const CustomerEditSchema = Yup.object().shape({
@@ -45,7 +45,7 @@ export function CustomerEditForm({
               )}
               <Form className='form form-label-right'>
                 <div className='form-group row'>
-                  {/* TechName */}
+                  {/* Category tags */}
                   <div className='col-lg-4'>
                     <Field
                       name='categoryName'
@@ -53,6 +53,14 @@ export function CustomerEditForm({
                       placeholder='Tên công nghệ'
                       label='Tên công nghệ'
                     />
+                  </div>
+                  {/* CATEGORY SELECT */}
+                  <div className='col-lg-4'>
+                    <Select label='Danh mục cha' name='categoryParent'>
+                      <option value='Business'>Business</option>
+                      <option value='Individual'>Individual</option>
+                      <option value='Nature'>Nature</option>
+                    </Select>
                   </div>
                   {/* SLUG */}
                   <div className='col-lg-4'>

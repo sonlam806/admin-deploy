@@ -63,7 +63,13 @@ export function CustomersTable() {
       sort: true,
       sortCaret: sortCaret,
       headerSortingClasses,
-      // formatter: columnFormatters.FirstNameColumnFormatter,
+    },
+    {
+      dataField: 'categoryParent',
+      text: 'Danh mục cha',
+      sort: true,
+      sortCaret: sortCaret,
+      headerSortingClasses,
     },
     {
       dataField: 'slug',
@@ -71,7 +77,6 @@ export function CustomersTable() {
       sort: true,
       sortCaret: sortCaret,
       headerSortingClasses,
-      // formatter: columnFormatters.UserNameColumnFormatter,
     },
     {
       dataField: 'action',

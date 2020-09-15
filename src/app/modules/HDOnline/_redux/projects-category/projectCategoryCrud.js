@@ -10,6 +10,7 @@ export function createCategory(category) {
 
 // READ
 export function getAllCategories() {
+  console.log('run getAllCategories')
   return axios.get(CATEGORY_URL);
 }
 

@@ -12,14 +12,16 @@ export default function mockProducts(mock) {
     } = JSON.parse(data);
     const {
       categoryName = "",
-        slug = ""
+        slug = "",
+        categoryParent = ""
     } = category;
 
     const id = generateProductId();
     const newCategory = {
       id,
       categoryName,
-      slug
+      slug,
+      categoryParent
     };
     projectsCategoryTableMock.push(newCategory);
     return [200, {
@@ -28,11 +30,14 @@ export default function mockProducts(mock) {
   });
 
   mock.onPost(`${ROOT_URL}/find`).reply(config => {
+    console.log('run find', config)
+
     const mockUtils = new MockUtils();
     const {
       queryParams
     } = JSON.parse(config.data);
     const filteredProducts = mockUtils.baseFilter(projectsCategoryTableMock, queryParams);
+    console.log(filteredProducts)
     return [200, filteredProducts];
   });
 
@@ -61,6 +66,7 @@ export default function mockProducts(mock) {
     });
     return [200];
   });
+
 
   mock.onGet(/api\/projects\/category\/\d+/).reply(config => {
     const id = config.url.match(/api\/projects\/category\/(\d+)/)[1];
