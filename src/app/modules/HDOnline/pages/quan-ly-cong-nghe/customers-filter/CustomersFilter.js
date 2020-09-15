@@ -7,16 +7,15 @@ const prepareFilter = (queryParams, values) => {
   const { status, type, searchText } = values;
   const newQueryParams = { ...queryParams };
   const filter = {};
-  // Filter by status
-  filter.status = status !== '' ? +status : undefined;
-  // Filter by type
-  filter.type = type !== '' ? +type : undefined;
+  // // Filter by status
+  // filter.status = status !== '' ? +status : undefined;
+  // // Filter by type
+  // filter.type = type !== '' ? +type : undefined;
   // Filter by all fields
-  filter.lastName = searchText;
+  filter.techName = searchText;
   if (searchText) {
-    filter.firstName = searchText;
-    filter.email = searchText;
-    filter.ipAddress = searchText;
+    filter.techName = searchText;
+    filter.slug = searchText;
   }
   newQueryParams.filter = filter;
   return newQueryParams;
@@ -110,7 +109,7 @@ export function CustomersFilter({ listLoading }) {
                   type='text'
                   className='form-control'
                   name='searchText'
-                  placeholder='Search'
+                  placeholder='Tìm kiếm'
                   onBlur={handleBlur}
                   value={values.searchText}
                   onChange={(e) => {

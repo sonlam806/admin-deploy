@@ -56,8 +56,7 @@ export const technologySlice = createSlice({
     productCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
-      console.log('payload', action.payload.product)
-      state.entities.push(action.payload.product);
+      state.entities.push(action.payload.post);
     },
     // updateProduct
     productUpdated: (state, action) => {
@@ -72,6 +71,7 @@ export const technologySlice = createSlice({
     },
     // deleteProduct
     productDeleted: (state, action) => {
+      console.log('action payload', action.payload)
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(el => el.id !== action.payload.id);

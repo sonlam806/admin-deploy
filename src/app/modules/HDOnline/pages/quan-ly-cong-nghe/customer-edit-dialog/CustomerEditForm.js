@@ -10,11 +10,11 @@ import { Input } from '../../../../../../_metronic/_partials/controls';
 
 // Validation schema
 const CustomerEditSchema = Yup.object().shape({
-  firstName: Yup.string()
+  techName: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Phải nhập tên công nghệ'),
-  userName: Yup.string()
+  slug: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols'),
 });
@@ -45,10 +45,20 @@ export function CustomerEditForm({
               )}
               <Form className='form form-label-right'>
                 <div className='form-group row'>
-                  {/* TAG */}
+                  {/* profile Image */}
                   <div className='col-lg-4'>
                     <Field
-                      name='firstName'
+                      name='profileImage'
+                      component={Input}
+                      value='https://picsum.photos/50'
+                      placeholder='Avatar'
+                      label='Avatar'
+                    />
+                  </div>
+                  {/* TechName */}
+                  <div className='col-lg-4'>
+                    <Field
+                      name='techName'
                       component={Input}
                       placeholder='Tên công nghệ'
                       label='Tên công nghệ'
@@ -57,7 +67,7 @@ export function CustomerEditForm({
                   {/* SLUG */}
                   <div className='col-lg-4'>
                     <Field
-                      name='userName'
+                      name='slug'
                       component={Input}
                       placeholder='Slug'
                       label='Slug'

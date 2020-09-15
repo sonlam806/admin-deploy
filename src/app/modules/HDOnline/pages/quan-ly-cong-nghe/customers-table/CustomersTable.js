@@ -36,9 +36,9 @@ export function CustomersTable() {
     };
   }, [customersUIContext]);
 
-  // Getting curret state of customers list from store (Redux)
+  // Getting curret state of technology list from store (Redux)
   const { currentState } = useSelector(
-    (state) => ({ currentState: state.posts }),
+    (state) => ({ currentState: state.technology }),
     shallowEqual
   );
   const { totalCount, entities, listLoading } = currentState;

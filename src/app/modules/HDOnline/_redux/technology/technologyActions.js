@@ -88,10 +88,11 @@ export const createProduct = productForCreation => dispatch => {
     .createProduct(productForCreation)
     .then(response => {
       const {
-        product
+        post
       } = response.data;
+
       dispatch(actions.productCreated({
-        product
+        post
       }));
     })
     .catch(error => {

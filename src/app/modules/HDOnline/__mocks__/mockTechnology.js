@@ -6,13 +6,13 @@ export default function mockTechnology(mock) {
     data
   }) => {
     const {
-      product
+      post
     } = JSON.parse(data);
     const {
       profileImage = "https://robohash.org/dignissimosdebitisdolor.bmp?size=50x50&set=set1",
         techName = "Scrophulariaceae",
         slug = "/yhwxmlif"
-    } = product;
+    } = post;
 
     const id = generateProductId();
     const newPost = {
@@ -40,6 +40,7 @@ export default function mockTechnology(mock) {
     const {
       ids
     } = JSON.parse(config.data);
+    console.log('ids', ids)
     ids.forEach(id => {
       const index = technologyTableMock.findIndex(el => el.id === id);
       if (index > -1) {
@@ -72,10 +73,10 @@ export default function mockTechnology(mock) {
     return [200, post];
   });
 
-  mock.onPut(/api\/posts\/\d+/).reply(config => {
+  mock.onPut(/api\/technology\/\d+/).reply(config => {
     const id = config.url.match(/api\/posts\/(\d+)/)[1];
     const {
-      product
+      post
     } = JSON.parse(config.data);
     const index = technologyTableMock.findIndex(el => el.id === +id);
     if (!index) {
@@ -83,13 +84,13 @@ export default function mockTechnology(mock) {
     }
 
     technologyTableMock[index] = {
-      ...product
+      ...post
     };
     return [200];
   });
 
-  mock.onDelete(/api\/posts\/\d+/).reply(config => {
-    const id = config.url.match(/api\/posts\/(\d+)/)[1];
+  mock.onDelete(/api\/technology\/\d+/).reply(config => {
+    const id = config.url.match(/api\/technology\/(\d+)/)[1];
     const index = technologyTableMock.findIndex(el => el.id === +id);
     technologyTableMock.splice(index, 1);
     if (!index === -1) {

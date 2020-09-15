@@ -41,6 +41,7 @@ export function updateStatusForProducts(ids, status) {
 
 // DELETE => delete the post from the server
 export function deleteProduct(postId) {
+  console.log('postId', postId)
   return axios.delete(`${POST_URL}/${postId}`);
 }
 

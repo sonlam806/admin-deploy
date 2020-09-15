@@ -29,6 +29,9 @@ export function CustomersUIProvider({ customersUIEvents, children }) {
 
   const initCustomer = {
     id: undefined,
+    techName: '',
+    slug: '',
+    profileImage: 'https://picsum.photos/50',
   };
 
   const value = {
