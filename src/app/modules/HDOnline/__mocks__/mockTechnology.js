@@ -40,7 +40,6 @@ export default function mockTechnology(mock) {
     const {
       ids
     } = JSON.parse(config.data);
-    console.log('ids', ids)
     ids.forEach(id => {
       const index = technologyTableMock.findIndex(el => el.id === id);
       if (index > -1) {
@@ -64,6 +63,7 @@ export default function mockTechnology(mock) {
   });
   // Get technology post for edit 
   mock.onGet(/api\/technology\/\d+/).reply(config => {
+    console.log('config', config)
     const id = config.url.match(/api\/technology\/(\d+)/)[1];
     const post = technologyTableMock.find(el => el.id === +id);
     if (!post) {

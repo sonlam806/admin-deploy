@@ -27,7 +27,8 @@ export function CustomerEditDialog({ id, show, onHide }) {
 
   useEffect(() => {
     // server call for getting Customer by id
-    dispatch(actions.fetchTags(id));
+    // dispatch(actions.fetchTags(id));
+    dispatch(actions.fetchTag(id));
   }, [id, dispatch]);
 
   // server request for saving customer

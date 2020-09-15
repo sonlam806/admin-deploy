@@ -19,7 +19,6 @@ export function getTagById(tagId) {
 // Method from server should return QueryResultsModel(items: any[], totalsCount: number)
 // items => filtered/sorted result
 export function findTags(queryParams) {
-  console.log('queryParams', queryParams)
   return axios.post(`${TAG_URL}/find`, {
     queryParams
   });

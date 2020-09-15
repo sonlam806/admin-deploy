@@ -33,7 +33,7 @@ export const fetchTags = queryParams => dispatch => {
     });
 };
 
-export const tagProduct = id => dispatch => {
+export const fetchTag = id => dispatch => {
   if (!id) {
     return dispatch(actions.tagFetched({
       tagForEdit: undefined

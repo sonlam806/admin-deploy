@@ -30,20 +30,14 @@ export default function mockTags(mock) {
       },
     ];
   });
-
-  mock.onPost(`${ROOT_URL}/find`).reply((config) => {
+  // `${ROOT_URL}/find`
+  mock.onPost('api/projects/tags/find').reply((config) => {
+    console.log('run config', config)
     const mockUtils = new MockUtils();
     const {
       queryParams
     } = JSON.parse(config.data);
-    // if (!queryParams.filter) {
-    //   const result = {
-    //     entities: tagTableMock[queryParams],
-    //     totalCount: 1,
-    //     errorMessage: ""
-    //   };
-    //   return [200, result]
-    // }
+
     const filteredProducts = mockUtils.baseFilter(tagTableMock, queryParams);
     return [200, filteredProducts];
   });
@@ -75,6 +69,7 @@ export default function mockTags(mock) {
   });
 
   mock.onGet(/api\/projects\/tags\/\d+/).reply((config) => {
+    console.log('config', config);
     const id = config.url.match(/api\/projects\/tags\/(\d+)/)[1];
     const post = tagTableMock.find((el) => el.id === +id);
     if (!post) {
@@ -85,6 +80,7 @@ export default function mockTags(mock) {
   });
 
   mock.onPut(/api\/projects\/tags\/\d+/).reply((config) => {
+    console.log('config', config);
     const id = config.url.match(/api\/projects\/tags\/(\d+)/)[1];
     const {
       tag
@@ -107,9 +103,9 @@ export default function mockTags(mock) {
   });
 
   mock.onDelete(/api\/projects\/tags\/\d+/).reply((config) => {
-    console.log(config)
+    console.log(config);
     const id = config.url.match(/api\/projects\/tags\/(\d+)/)[1];
-    console.log(id)
+    console.log(id);
     const index = tagTableMock.findIndex((el) => el.id === +id);
     tagTableMock.splice(index, 1);
     if (!index === -1) {
