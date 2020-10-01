@@ -1,9 +1,7 @@
 /* eslint-disable no-script-url,jsx-a11y/anchor-is-valid */
 import React, { useMemo, useLayoutEffect, useEffect } from 'react';
 import objectPath from 'object-path';
-import { useLocation, useParams } from 'react-router-dom';
-import SVG from 'react-inlinesvg';
-import { toAbsoluteUrl } from '../../../_helpers';
+import { useLocation } from 'react-router-dom';
 // import { QuickActions } from './components/QuickActions';
 // import { BreadCrumbs } from "./components/BreadCrumbs";
 import {
@@ -39,6 +37,7 @@ export function SubHeader() {
       aside && aside.breadcrumbs.length > 0
         ? aside.breadcrumbs
         : header.breadcrumbs;
+
     subheader.setBreadcrumbs(breadcrumbs);
     subheader.setTitle(
       aside && aside.title && aside.title.length > 0

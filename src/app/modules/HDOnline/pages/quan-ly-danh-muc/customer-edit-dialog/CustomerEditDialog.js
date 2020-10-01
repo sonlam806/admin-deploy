@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { Modal } from 'react-bootstrap';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../../_redux/customers/customersActions';
+import * as actions from '../../../_redux/posts-category/postCategoryActions';
 import { CustomerEditDialogHeader } from './CustomerEditDialogHeader';
 import { CustomerEditForm } from './CustomerEditForm';
 import { useCustomersUIContext } from '../CustomersUIContext';
@@ -11,33 +11,33 @@ export function CustomerEditDialog({ id, show, onHide }) {
   const customersUIContext = useCustomersUIContext();
   const customersUIProps = useMemo(() => {
     return {
-      initCustomer: customersUIContext.initCustomer,
+      initCategory: customersUIContext.initCategory,
     };
   }, [customersUIContext]);
 
   // Customers Redux state
   const dispatch = useDispatch();
-  const { actionsLoading, customerForEdit } = useSelector(
+  const { actionsLoading, categoryForEdit } = useSelector(
     (state) => ({
-      actionsLoading: state.customers.actionsLoading,
-      customerForEdit: state.customers.customerForEdit,
+      actionsLoading: state.postCategories.actionsLoading,
+      categoryForEdit: state.postCategories.categoryForEdit,
     }),
     shallowEqual
   );
 
   useEffect(() => {
     // server call for getting Customer by id
-    dispatch(actions.fetchCustomer(id));
+    dispatch(actions.fetchCategory(id));
   }, [id, dispatch]);
 
   // server request for saving customer
-  const saveCustomer = (customer) => {
+  const saveCategory = (category) => {
     if (!id) {
-      // server request for creating customer
-      dispatch(actions.createCustomer(customer)).then(() => onHide());
+      // server request for creating category
+      dispatch(actions.createCategory(category)).then(() => onHide());
     } else {
-      // server request for updating customer
-      dispatch(actions.updateCustomer(customer)).then(() => onHide());
+      // server request for updating category
+      dispatch(actions.updateCategory(category)).then(() => onHide());
     }
   };
 
@@ -50,9 +50,9 @@ export function CustomerEditDialog({ id, show, onHide }) {
     >
       <CustomerEditDialogHeader id={id} />
       <CustomerEditForm
-        saveCustomer={saveCustomer}
+        saveCategory={saveCategory}
         actionsLoading={actionsLoading}
-        customer={customerForEdit || customersUIProps.initCustomer}
+        category={categoryForEdit || customersUIProps.initCategory}
         onHide={onHide}
       />
     </Modal>

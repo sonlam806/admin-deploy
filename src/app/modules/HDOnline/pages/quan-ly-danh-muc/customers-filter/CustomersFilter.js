@@ -12,11 +12,11 @@ const prepareFilter = (queryParams, values) => {
   // Filter by type
   filter.type = type !== '' ? +type : undefined;
   // Filter by all fields
-  filter.lastName = searchText;
+  filter.categoryName = searchText;
   if (searchText) {
-    filter.firstName = searchText;
-    filter.email = searchText;
-    filter.ipAddress = searchText;
+    filter.categoryName = searchText;
+    filter.categoryParent = searchText;
+    filter.slug = searchText;
   }
   newQueryParams.filter = filter;
   return newQueryParams;

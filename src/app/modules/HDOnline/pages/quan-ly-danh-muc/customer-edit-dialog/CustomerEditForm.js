@@ -6,26 +6,26 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { Input } from '../../../../../../_metronic/_partials/controls';
+import { Input, Select } from '../../../../../../_metronic/_partials/controls';
 
 // Validation schema
-const CustomerEditSchema = Yup.object().shape({
-  firstName: Yup.string()
+const CategoryEditSchema = Yup.object().shape({
+  categoryName: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Bắt buộc phải nhập tên danh mục'),
-  lastName: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Bắt buộc phải nhập danh mục cha'),
-  userName: Yup.string()
+  // categoryParent: Yup.string()
+  //   .min(3, 'Minimum 3 symbols')
+  //   .max(50, 'Maximum 50 symbols')
+  //   .required('Bắt buộc phải nhập danh mục cha'),
+  slug: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols'),
 });
 
 export function CustomerEditForm({
-  saveCustomer,
-  customer,
+  saveCategory,
+  category,
   actionsLoading,
   onHide,
 }) {
@@ -33,10 +33,10 @@ export function CustomerEditForm({
     <>
       <Formik
         enableReinitialize={true}
-        initialValues={customer}
-        validationSchema={CustomerEditSchema}
+        initialValues={category}
+        validationSchema={CategoryEditSchema}
         onSubmit={(values) => {
-          saveCustomer(values);
+          saveCategory(values);
         }}
       >
         {({ handleSubmit }) => (
@@ -49,28 +49,27 @@ export function CustomerEditForm({
               )}
               <Form className='form form-label-right'>
                 <div className='form-group row'>
-                  {/* First Name */}
+                  {/* Category Name */}
                   <div className='col-lg-4'>
                     <Field
-                      name='firstName'
+                      name='categoryName'
                       component={Input}
                       placeholder='Tên'
                       label='Tên'
                     />
                   </div>
-                  {/* Last Name */}
+                  {/* Parent Category */}
                   <div className='col-lg-4'>
-                    <Field
-                      name='lastName'
-                      component={Input}
-                      placeholder='Chọn danh mục cha'
-                      label='Chọn danh mục cha'
-                    />
+                    <Select label='Chọn danh mục cha' name='categoryParent'>
+                      <option value='finance'>Finance</option>
+                      <option value='healthcare'>Health Care</option>
+                      <option value='technology'>Technology</option>
+                    </Select>
                   </div>
-                  {/* Login */}
+                  {/* Slug */}
                   <div className='col-lg-4'>
                     <Field
-                      name='userName'
+                      name='slug'
                       component={Input}
                       placeholder='slug'
                       label='slug'

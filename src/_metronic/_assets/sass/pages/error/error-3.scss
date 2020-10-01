@@ -6,6 +6,8 @@
 @import "../../init";
 
 .error.error-3 {
+	height: 78vh !important;
+
 	.error-title {
 		font-size: 8.7rem !important;
 	}
@@ -13,6 +15,8 @@
 
 @include media-breakpoint-up(md) {
 	.error.error-3 {
+		height: 78vh !important;
+
 		.error-title {
 			font-size: 15.7rem !important;
 		}

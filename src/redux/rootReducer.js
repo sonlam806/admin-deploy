@@ -30,6 +30,9 @@ import {
 import {
   categorySlice
 } from '../app/modules/HDOnline/_redux/projects-category/projectCategorySlice'
+import {
+  categorySlice as postCategorySlice
+} from '../app/modules/HDOnline/_redux/posts-category/postCategorySlice'
 
 export const rootReducer = combineReducers({
   auth: auth.reducer,
@@ -40,7 +43,8 @@ export const rootReducer = combineReducers({
   posts: postsSlice.reducer,
   technology: technologySlice.reducer,
   tags: tagsSlice.reducer,
-  categories: categorySlice.reducer
+  categories: categorySlice.reducer,
+  postCategories: postCategorySlice.reducer
 });
 
 export function* rootSaga() {

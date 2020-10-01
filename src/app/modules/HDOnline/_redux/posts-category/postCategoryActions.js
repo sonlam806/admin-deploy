@@ -1,31 +1,33 @@
-import * as requestFromServer from "./customersCrud";
+import * as requestFromServer from "./postCategoryCrud";
 import {
-  customersSlice,
+  categorySlice,
   callTypes
-} from "./customersSlice";
+} from "./postCategorySlice";
 
 const {
   actions
-} = customersSlice;
+} = categorySlice;
 
-export const fetchCustomers = queryParams => dispatch => {
+export const fetchCategories = queryParams => dispatch => {
+  console.log('run fetch Categories')
   dispatch(actions.startCall({
     callType: callTypes.list
   }));
   return requestFromServer
-    .findCustomers(queryParams)
+    .findCategories(queryParams)
     .then(response => {
       const {
         totalCount,
         entities
       } = response.data;
-      dispatch(actions.customersFetched({
+      console.log(response.data)
+      dispatch(actions.categoriesFetched({
         totalCount,
         entities
       }));
     })
     .catch(error => {
-      error.clientMessage = "Can't find customers";
+      error.clientMessage = "Can't find products";
       dispatch(actions.catchError({
         error,
         callType: callTypes.list
@@ -33,10 +35,10 @@ export const fetchCustomers = queryParams => dispatch => {
     });
 };
 
-export const fetchCustomer = id => dispatch => {
+export const fetchCategory = id => dispatch => {
   if (!id) {
-    return dispatch(actions.customerFetched({
-      customerForEdit: undefined
+    return dispatch(actions.categoryFetched({
+      categoryForEdit: undefined
     }));
   }
 
@@ -44,15 +46,15 @@ export const fetchCustomer = id => dispatch => {
     callType: callTypes.action
   }));
   return requestFromServer
-    .getCustomerById(id)
+    .getCategoryById(id)
     .then(response => {
-      const customer = response.data;
-      dispatch(actions.customerFetched({
-        customerForEdit: customer
+      const category = response.data;
+      dispatch(actions.categoryFetched({
+        categoryForEdit: category
       }));
     })
     .catch(error => {
-      error.clientMessage = "Can't find customer";
+      error.clientMessage = "Can't find product";
       dispatch(actions.catchError({
         error,
         callType: callTypes.action
@@ -60,19 +62,19 @@ export const fetchCustomer = id => dispatch => {
     });
 };
 
-export const deleteCustomer = id => dispatch => {
+export const deleteCategory = id => dispatch => {
   dispatch(actions.startCall({
     callType: callTypes.action
   }));
   return requestFromServer
-    .deleteCustomer(id)
+    .deleteCategory(id)
     .then(response => {
-      dispatch(actions.customerDeleted({
+      dispatch(actions.categoryDeleted({
         id
       }));
     })
     .catch(error => {
-      error.clientMessage = "Can't delete customer";
+      error.clientMessage = "Can't delete product";
       dispatch(actions.catchError({
         error,
         callType: callTypes.action
@@ -80,22 +82,23 @@ export const deleteCustomer = id => dispatch => {
     });
 };
 
-export const createCustomer = customerForCreation => dispatch => {
+export const createCategory = categoryForCreation => dispatch => {
   dispatch(actions.startCall({
     callType: callTypes.action
   }));
   return requestFromServer
-    .createCustomer(customerForCreation)
+    .createCategory(categoryForCreation)
     .then(response => {
       const {
-        customer
+        category
       } = response.data;
-      dispatch(actions.customerCreated({
-        customer
+      console.log(response)
+      dispatch(actions.categoryCreated({
+        category
       }));
     })
     .catch(error => {
-      error.clientMessage = "Can't create customer";
+      error.clientMessage = "Can't create product";
       dispatch(actions.catchError({
         error,
         callType: callTypes.action
@@ -103,19 +106,19 @@ export const createCustomer = customerForCreation => dispatch => {
     });
 };
 
-export const updateCustomer = customer => dispatch => {
+export const updateCategory = category => dispatch => {
   dispatch(actions.startCall({
     callType: callTypes.action
   }));
   return requestFromServer
-    .updateCustomer(customer)
+    .updateCategory(category)
     .then(() => {
-      dispatch(actions.customerUpdated({
-        customer
+      dispatch(actions.categoryUpdated({
+        category
       }));
     })
     .catch(error => {
-      error.clientMessage = "Can't update customer";
+      error.clientMessage = "Can't update product";
       dispatch(actions.catchError({
         error,
         callType: callTypes.action
@@ -123,20 +126,20 @@ export const updateCustomer = customer => dispatch => {
     });
 };
 
-export const updateCustomersStatus = (ids, status) => dispatch => {
+export const updateCategoriesStatus = (ids, status) => dispatch => {
   dispatch(actions.startCall({
     callType: callTypes.action
   }));
   return requestFromServer
-    .updateStatusForCustomers(ids, status)
+    .updateStatusForCategories(ids, status)
     .then(() => {
-      dispatch(actions.customersStatusUpdated({
+      dispatch(actions.categoriesStatusUpdated({
         ids,
         status
       }));
     })
     .catch(error => {
-      error.clientMessage = "Can't update customers status";
+      error.clientMessage = "Can't update products status";
       dispatch(actions.catchError({
         error,
         callType: callTypes.action
@@ -144,19 +147,19 @@ export const updateCustomersStatus = (ids, status) => dispatch => {
     });
 };
 
-export const deleteCustomers = ids => dispatch => {
+export const deleteCategories = ids => dispatch => {
   dispatch(actions.startCall({
     callType: callTypes.action
   }));
   return requestFromServer
-    .deleteCustomers(ids)
+    .deleteCategories(ids)
     .then(() => {
-      dispatch(actions.customersDeleted({
+      dispatch(actions.categoriesDeleted({
         ids
       }));
     })
     .catch(error => {
-      error.clientMessage = "Can't delete customers";
+      error.clientMessage = "Can't delete products";
       dispatch(actions.catchError({
         error,
         callType: callTypes.action

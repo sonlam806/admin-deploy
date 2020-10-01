@@ -17,9 +17,8 @@ import { QuickActions } from './extras/offcanvas/QuickActions';
 import { ScrollTop } from './extras/ScrollTop';
 import { AnimateLoading } from '../../_partials/controls';
 import { ErrorPage3 } from '../../../app/modules/ErrorsExamples/ErrorPage3';
-import { Route } from 'react-router-dom';
 
-export function Layout({ children }) {
+export function ErrorLayout({ children }) {
   const uiService = useHtmlClassService();
   // Layout settings (cssClasses/cssAttributes)
   const layoutProps = useMemo(() => {
@@ -65,6 +64,7 @@ export function Layout({ children }) {
                   {/*begin::Container*/}
                   <div className={layoutProps.contentContainerClasses}>
                     {children}
+                    <ErrorPage3 />
                   </div>
                   {/*end::Container*/}
                 </div>
