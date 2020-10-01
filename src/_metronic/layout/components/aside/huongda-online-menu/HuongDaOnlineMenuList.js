@@ -12,10 +12,6 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
       ? ` ${!hasSubmenu && 'menu-item-active'} menu-item-open `
       : '';
   };
-  const handleClick = (event, container) => {
-    event.preventDefault();
-    console.log('clicked', container);
-  };
 
   return (
     <>
@@ -35,104 +31,155 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
         </li>
         {/*end::1 Level*/}
 
-        {/* Bài viết */}
+        {/* Components */}
+        {/* begin::section */}
+        <li className='menu-section '>
+          <h4 className='menu-text'>Quản lý dịch vụ</h4>
+          <i className='menu-icon flaticon-more-v2'></i>
+        </li>
+        {/* end:: section */}
+
+        {/* Material-UI */}
         {/*begin::1 Level*/}
         <li
           className={`menu-item menu-item-submenu ${getMenuItemActive(
-            '/huong-da-online/posts',
+            '/huong-da-online/services',
             true
           )}`}
           aria-haspopup='true'
           data-menu-toggle='hover'
-          onClick={(e) => handleClick(e)}
         >
           <NavLink
             className='menu-link menu-toggle'
-            to='/huong-da-online/posts'
+            to='/huong-da-online/services'
           >
             <span className='svg-icon menu-icon'>
-              <SVG src={toAbsoluteUrl('/media/svg/icons/Shopping/Box2.svg')} />
+              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
             </span>
-            <span className='menu-text'>Bài viết</span>
+            <span className='menu-text'>Quản lý tài khoản</span>
+          </NavLink>
+        </li>
+        {/*end::1 Level*/}
+
+        {/*begin::1 Level*/}
+        <li
+          className={`menu-item menu-item-submenu ${getMenuItemActive(
+            '/huong-da-online/template',
+            true
+          )}`}
+          aria-haspopup='true'
+          data-menu-toggle='hover'
+        >
+          <NavLink
+            className='menu-link menu-toggle'
+            to='/huong-da-online/template'
+          >
+            <span className='svg-icon menu-icon'>
+              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
+            </span>
+            <span className='menu-text'>Quản lý template</span>
+          </NavLink>
+        </li>
+        {/*end::1 Level*/}
+        {/*begin::1 Level*/}
+        <li
+          className={`menu-item menu-item-submenu ${getMenuItemActive(
+            '/huong-da-online/domain-control',
+            true
+          )}`}
+          aria-haspopup='true'
+          data-menu-toggle='hover'
+        >
+          <NavLink
+            className='menu-link menu-toggle'
+            to='/huong-da-online/domain-control'
+          >
+            <span className='svg-icon menu-icon'>
+              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
+            </span>
+            <span className='menu-text'>Quản lý tên miền</span>
             <i className='menu-arrow' />
           </NavLink>
-          <div className='menu-submenu '>
-            <ul className='menu-subnav'>
-              <ul className='menu-subnav'>
-                <li
-                  className='menu-item  menu-item-parent'
-                  aria-haspopup='true'
-                >
-                  <span className='menu-link'>
-                    <span className='menu-text'>Bài viết</span>
-                  </span>
-                </li>
 
-                {/*begin::2 Level*/}
-                <li
-                  className={`menu-item ${getMenuItemActive(
-                    '/huong-da-online/posts/post'
-                  )}`}
-                  aria-haspopup='true'
+          <div className='menu-submenu '>
+            <i className='menu-arrow' />
+            <ul className='menu-subnav'>
+              <li className='menu-item  menu-item-parent' aria-haspopup='true'>
+                <span className='menu-link'>
+                  <span className='menu-text'>Quản lý tên miền</span>
+                </span>
+              </li>
+
+              {/* Inputs */}
+              {/*begin:: Level 3*/}
+              <li
+                className={`menu-item menu-item-submenu ${getMenuItemActive(
+                  '/huong-da-online/dashboard',
+                  true
+                )}`}
+                aria-haspopup='true'
+                data-menu-toggle='hover'
+              >
+                <NavLink
+                  className='menu-link menu-toggle'
+                  to='/huong-da-online/dashboard'
                 >
-                  <NavLink
-                    className='menu-link'
-                    to='/huong-da-online/posts/post'
-                  >
-                    <i className='menu-bullet menu-bullet-dot'>
-                      <span />
-                    </i>
-                    <span className='menu-text'>Quản lý bài viết</span>
-                  </NavLink>
-                </li>
-                {/*end::2 Level*/}
-                {/*begin::2 Level*/}
-                <li
-                  className={`menu-item ${getMenuItemActive(
-                    '/huong-da-online/posts/category'
-                  )}`}
-                  aria-haspopup='true'
+                  <i className='menu-bullet menu-bullet-dot'>
+                    <span />
+                  </i>
+                  <span className='menu-text'>Dashboard</span>
+                </NavLink>
+              </li>
+              {/* end:: Level 3 */}
+              {/*begin:: Level 3*/}
+              <li
+                className={`menu-item menu-item-submenu ${getMenuItemActive(
+                  '/huong-da-online/domain',
+                  true
+                )}`}
+                aria-haspopup='true'
+                data-menu-toggle='hover'
+              >
+                <NavLink
+                  className='menu-link menu-toggle'
+                  to='/huong-da-online/domain'
                 >
-                  <NavLink
-                    className='menu-link'
-                    to='/huong-da-online/posts/category'
-                  >
-                    <i className='menu-bullet menu-bullet-dot'>
-                      <span />
-                    </i>
-                    <span className='menu-text'>Quản lý danh mục</span>
-                  </NavLink>
-                </li>
-                {/*end::2 Level*/}
-                {/*begin::2 Level*/}
-                <li
-                  className={`menu-item ${getMenuItemActive(
-                    '/huong-da-online/posts/tags'
-                  )}`}
-                  aria-haspopup='true'
+                  <i className='menu-bullet menu-bullet-dot'>
+                    <span />
+                  </i>
+                  <span className='menu-text'>Danh sách tên miền</span>
+                </NavLink>
+              </li>
+              {/* end:: Level 3 */}
+              {/*begin:: Level 3*/}
+              <li
+                className={`menu-item menu-item-submenu ${getMenuItemActive(
+                  '/huong-da-online/bang-gia',
+                  true
+                )}`}
+                aria-haspopup='true'
+                data-menu-toggle='hover'
+              >
+                <NavLink
+                  className='menu-link menu-toggle'
+                  to='/huong-da-online/bang-gia'
                 >
-                  <NavLink
-                    className='menu-link'
-                    to='/huong-da-online/posts/tags'
-                  >
-                    <i className='menu-bullet menu-bullet-dot'>
-                      <span />
-                    </i>
-                    <span className='menu-text'>Quản lý tags</span>
-                  </NavLink>
-                </li>
-                {/*end::2 Level*/}
-              </ul>
+                  <i className='menu-bullet menu-bullet-dot'>
+                    <span />
+                  </i>
+                  <span className='menu-text'>Bảng giá</span>
+                </NavLink>
+              </li>
+              {/* end:: Level 3 */}
             </ul>
           </div>
         </li>
         {/*end::1 Level*/}
-
-        {/* Dự án */}
+        {/* DNS */}
         {/*begin::1 Level*/}
         <li
           className={`menu-item menu-item-submenu ${getMenuItemActive(
-            '/huong-da-online',
+            '/huong-da-online/domain-control',
             true
           )}`}
           aria-haspopup='true'
@@ -140,101 +187,180 @@ export function HuongDaOnlineMenuList({ layoutProps }) {
         >
           <NavLink
             className='menu-link menu-toggle'
-            to='/huong-da-online/projects'
+            to='/huong-da-online/domain-control'
           >
             <span className='svg-icon menu-icon'>
-              <SVG
-                src={toAbsoluteUrl('/media/svg/icons/Shopping/Settings.svg')}
-              />
+              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
             </span>
-            <span className='menu-text'>Dự án</span>
+            <span className='menu-text'>Quản lý DNS</span>
             <i className='menu-arrow' />
           </NavLink>
-          <div className='menu-submenu '>
-            <ul className='menu-subnav'>
-              <ul className='menu-subnav'>
-                <li
-                  className='menu-item  menu-item-parent'
-                  aria-haspopup='true'
-                >
-                  <span className='menu-link'>
-                    <span className='menu-text'>Dự án</span>
-                  </span>
-                </li>
 
-                {/*begin::2 Level*/}
-                <li
-                  className={`menu-item ${getMenuItemActive(
-                    '/huong-da-online/projects/project'
-                  )}`}
-                  aria-haspopup='true'
+          <div className='menu-submenu '>
+            <i className='menu-arrow' />
+            <ul className='menu-subnav'>
+              <li className='menu-item  menu-item-parent' aria-haspopup='true'>
+                <span className='menu-link'>
+                  <span className='menu-text'>Quản lý DNS</span>
+                </span>
+              </li>
+
+              {/* Inputs */}
+              {/*begin:: Level 3*/}
+              <li
+                className={`menu-item menu-item-submenu ${getMenuItemActive(
+                  '/huong-da-online/dashboard',
+                  true
+                )}`}
+                aria-haspopup='true'
+                data-menu-toggle='hover'
+              >
+                <NavLink
+                  className='menu-link menu-toggle'
+                  to='/huong-da-online/dashboard'
                 >
-                  <NavLink
-                    className='menu-link'
-                    to='/huong-da-online/projects/project'
-                  >
-                    <i className='menu-bullet menu-bullet-dot'>
-                      <span />
-                    </i>
-                    <span className='menu-text'>Quản lý dự án</span>
-                  </NavLink>
-                </li>
-                {/*end::2 Level*/}
-                {/*begin::2 Level*/}
-                <li
-                  className={`menu-item ${getMenuItemActive(
-                    '/huong-da-online/projects/technology'
-                  )}`}
-                  aria-haspopup='true'
+                  <i className='menu-bullet menu-bullet-dot'>
+                    <span />
+                  </i>
+                  <span className='menu-text'>Danh sách domain</span>
+                </NavLink>
+              </li>
+              {/* end:: Level 3 */}
+              {/*begin:: Level 3*/}
+              <li
+                className={`menu-item menu-item-submenu ${getMenuItemActive(
+                  '/huong-da-online/domain',
+                  true
+                )}`}
+                aria-haspopup='true'
+                data-menu-toggle='hover'
+              >
+                <NavLink
+                  className='menu-link menu-toggle'
+                  to='/huong-da-online/domain'
                 >
-                  <NavLink
-                    className='menu-link'
-                    to='/huong-da-online/projects/technology'
-                  >
-                    <i className='menu-bullet menu-bullet-dot'>
-                      <span />
-                    </i>
-                    <span className='menu-text'>Quản lý công nghệ</span>
-                  </NavLink>
-                </li>
-                {/*end::2 Level*/}
-                {/*begin::2 Level*/}
-                <li
-                  className={`menu-item ${getMenuItemActive(
-                    '/huong-da-online/projects/category'
-                  )}`}
-                  aria-haspopup='true'
+                  <i className='menu-bullet menu-bullet-dot'>
+                    <span />
+                  </i>
+                  <span className='menu-text'>Cấu hình DNS server</span>
+                </NavLink>
+              </li>
+              {/* end:: Level 3 */}
+            </ul>
+          </div>
+        </li>
+        {/*end::1 Level*/}
+        {/* WP hosting */}
+        {/*begin::1 Level*/}
+        <li
+          className={`menu-item menu-item-submenu ${getMenuItemActive(
+            '/huong-da-online/domain-control',
+            true
+          )}`}
+          aria-haspopup='true'
+          data-menu-toggle='hover'
+        >
+          <NavLink
+            className='menu-link menu-toggle'
+            to='/huong-da-online/domain-control'
+          >
+            <span className='svg-icon menu-icon'>
+              <SVG src={toAbsoluteUrl('/media/svg/icons/Design/Cap-2.svg')} />
+            </span>
+            <span className='menu-text'>Quản lý WP hosting</span>
+            <i className='menu-arrow' />
+          </NavLink>
+
+          <div className='menu-submenu '>
+            <i className='menu-arrow' />
+            <ul className='menu-subnav'>
+              <li className='menu-item  menu-item-parent' aria-haspopup='true'>
+                <span className='menu-link'>
+                  <span className='menu-text'>Quản lý WP hosting</span>
+                </span>
+              </li>
+
+              {/* Inputs */}
+              {/*begin:: Level 3*/}
+              <li
+                className={`menu-item menu-item-submenu ${getMenuItemActive(
+                  '/huong-da-online/dashboard',
+                  true
+                )}`}
+                aria-haspopup='true'
+                data-menu-toggle='hover'
+              >
+                <NavLink
+                  className='menu-link menu-toggle'
+                  to='/huong-da-online/dashboard'
                 >
-                  <NavLink
-                    className='menu-link'
-                    to='/huong-da-online/projects/category'
-                  >
-                    <i className='menu-bullet menu-bullet-dot'>
-                      <span />
-                    </i>
-                    <span className='menu-text'>Quản lý danh mục</span>
-                  </NavLink>
-                </li>
-                {/*end::2 Level*/}
-                {/*begin::2 Level*/}
-                <li
-                  className={`menu-item ${getMenuItemActive(
-                    '/huong-da-online/projects/tags'
-                  )}`}
-                  aria-haspopup='true'
+                  <i className='menu-bullet menu-bullet-dot'>
+                    <span />
+                  </i>
+                  <span className='menu-text'>Dashboard</span>
+                </NavLink>
+              </li>
+              {/* end:: Level 3 */}
+              {/*begin:: Level 3*/}
+              <li
+                className={`menu-item menu-item-submenu ${getMenuItemActive(
+                  '/huong-da-online/domain',
+                  true
+                )}`}
+                aria-haspopup='true'
+                data-menu-toggle='hover'
+              >
+                <NavLink
+                  className='menu-link menu-toggle'
+                  to='/huong-da-online/domain'
                 >
-                  <NavLink
-                    className='menu-link'
-                    to='/huong-da-online/projects/tags'
-                  >
-                    <i className='menu-bullet menu-bullet-dot'>
-                      <span />
-                    </i>
-                    <span className='menu-text'>Quản lý tag</span>
-                  </NavLink>
-                </li>
-                {/*end::2 Level*/}
-              </ul>
+                  <i className='menu-bullet menu-bullet-dot'>
+                    <span />
+                  </i>
+                  <span className='menu-text'>Cấu hình bảng giá</span>
+                </NavLink>
+              </li>
+              {/* end:: Level 3 */}
+              {/*begin:: Level 3*/}
+              <li
+                className={`menu-item menu-item-submenu ${getMenuItemActive(
+                  '/huong-da-online/domain',
+                  true
+                )}`}
+                aria-haspopup='true'
+                data-menu-toggle='hover'
+              >
+                <NavLink
+                  className='menu-link menu-toggle'
+                  to='/huong-da-online/domain'
+                >
+                  <i className='menu-bullet menu-bullet-dot'>
+                    <span />
+                  </i>
+                  <span className='menu-text'>Quản lý gói mua</span>
+                </NavLink>
+              </li>
+              {/* end:: Level 3 */}
+              {/*begin:: Level 3*/}
+              <li
+                className={`menu-item menu-item-submenu ${getMenuItemActive(
+                  '/huong-da-online/domain',
+                  true
+                )}`}
+                aria-haspopup='true'
+                data-menu-toggle='hover'
+              >
+                <NavLink
+                  className='menu-link menu-toggle'
+                  to='/huong-da-online/domain'
+                >
+                  <i className='menu-bullet menu-bullet-dot'>
+                    <span />
+                  </i>
+                  <span className='menu-text'>Cấu hình server</span>
+                </NavLink>
+              </li>
+              {/* end:: Level 3 */}
             </ul>
           </div>
         </li>
