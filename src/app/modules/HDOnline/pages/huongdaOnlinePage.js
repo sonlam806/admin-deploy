@@ -10,6 +10,7 @@ import { QuanLyTagPage } from './quan-ly-posts-tag/QuanLyTagPage';
 import { TechnologiesPage } from './quan-ly-cong-nghe/TechnologiesPage';
 import { ProjectsTagPage } from './quan-ly-project-tags/ProjectsTagPage';
 import { ProjectsCategoryPage } from './quan-ly-project-category/ProjectsCategoryPage';
+import { PostEdit } from './quan-ly-posts-post/product-edit/PostEdit';
 
 export default function huongdaOnlinePage() {
   return (
@@ -17,20 +18,27 @@ export default function huongdaOnlinePage() {
       <Switch>
         {
           /* Redirect from eCommerce root URL to /customers */
-          <Redirect
-            exact={true}
-            from='/huong-da-online/'
-            to='/huong-da-online/posts/post'
-          />
+          // <Redirect
+          //   exact={true}
+          //   from='/huong-da-online/'
+          //   to='/huong-da-online/posts/post'
+          // />
         }
         <ContentRoute
           path='/huong-da-online/customers'
           component={CustomersPage}
         />
+        {/* Posts Page */}
         <ContentRoute
           path='/huong-da-online/posts/post'
           component={PostsPage}
         />
+
+        <ContentRoute
+          path='/huong-da-online/posts/post/new'
+          component={QuanLyTagPage}
+        />
+
         <ContentRoute
           path='/huong-da-online/posts/tags'
           component={QuanLyTagPage}

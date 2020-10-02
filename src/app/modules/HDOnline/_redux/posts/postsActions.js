@@ -8,24 +8,24 @@ const {
   actions
 } = postsSlice;
 
-export const fetchProducts = queryParams => dispatch => {
+export const fetchPosts = queryParams => dispatch => {
   dispatch(actions.startCall({
     callType: callTypes.list
   }));
   return requestFromServer
-    .findProducts(queryParams)
+    .findPosts(queryParams)
     .then(response => {
       const {
         totalCount,
         entities
       } = response.data;
-      dispatch(actions.productsFetched({
+      dispatch(actions.postsFetched({
         totalCount,
         entities
       }));
     })
     .catch(error => {
-      error.clientMessage = "Can't find products";
+      error.clientMessage = "Can't find posts";
       dispatch(actions.catchError({
         error,
         callType: callTypes.list
@@ -33,9 +33,9 @@ export const fetchProducts = queryParams => dispatch => {
     });
 };
 
-export const fetchProduct = id => dispatch => {
+export const fetchPost = id => dispatch => {
   if (!id) {
-    return dispatch(actions.productFetched({
+    return dispatch(actions.postFetched({
       productForEdit: undefined
     }));
   }
@@ -44,10 +44,10 @@ export const fetchProduct = id => dispatch => {
     callType: callTypes.action
   }));
   return requestFromServer
-    .getProductById(id)
+    .getPostById(id)
     .then(response => {
       const product = response.data;
-      dispatch(actions.productFetched({
+      dispatch(actions.postFetched({
         productForEdit: product
       }));
     })
@@ -60,14 +60,14 @@ export const fetchProduct = id => dispatch => {
     });
 };
 
-export const deleteProduct = id => dispatch => {
+export const deletePost = id => dispatch => {
   dispatch(actions.startCall({
     callType: callTypes.action
   }));
   return requestFromServer
-    .deleteProduct(id)
+    .deletePost(id)
     .then(response => {
-      dispatch(actions.productDeleted({
+      dispatch(actions.postDeleted({
         id
       }));
     })
@@ -80,17 +80,17 @@ export const deleteProduct = id => dispatch => {
     });
 };
 
-export const createProduct = productForCreation => dispatch => {
+export const createPost = postForCreation => dispatch => {
   dispatch(actions.startCall({
     callType: callTypes.action
   }));
   return requestFromServer
-    .createProduct(productForCreation)
+    .createPost(postForCreation)
     .then(response => {
       const {
         product
       } = response.data;
-      dispatch(actions.productCreated({
+      dispatch(actions.postCreated({
         product
       }));
     })
@@ -103,15 +103,15 @@ export const createProduct = productForCreation => dispatch => {
     });
 };
 
-export const updateProduct = product => dispatch => {
+export const updatePost = post => dispatch => {
   dispatch(actions.startCall({
     callType: callTypes.action
   }));
   return requestFromServer
-    .updateProduct(product)
+    .updatePost(post)
     .then(() => {
-      dispatch(actions.productUpdated({
-        product
+      dispatch(actions.postUpdated({
+        post
       }));
     })
     .catch(error => {
@@ -123,14 +123,14 @@ export const updateProduct = product => dispatch => {
     });
 };
 
-export const updateProductsStatus = (ids, status) => dispatch => {
+export const updatePostsStatus = (ids, status) => dispatch => {
   dispatch(actions.startCall({
     callType: callTypes.action
   }));
   return requestFromServer
-    .updateStatusForProducts(ids, status)
+    .updateStatusForPosts(ids, status)
     .then(() => {
-      dispatch(actions.productsStatusUpdated({
+      dispatch(actions.postsStatusUpdated({
         ids,
         status
       }));
@@ -144,14 +144,14 @@ export const updateProductsStatus = (ids, status) => dispatch => {
     });
 };
 
-export const deleteProducts = ids => dispatch => {
+export const deletePosts = ids => dispatch => {
   dispatch(actions.startCall({
     callType: callTypes.action
   }));
   return requestFromServer
-    .deleteProducts(ids)
+    .deletePosts(ids)
     .then(() => {
-      dispatch(actions.productsDeleted({
+      dispatch(actions.postsDeleted({
         ids
       }));
     })

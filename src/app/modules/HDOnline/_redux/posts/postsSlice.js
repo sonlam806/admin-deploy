@@ -2,12 +2,12 @@ import {
   createSlice
 } from "@reduxjs/toolkit";
 
-const initialProductsState = {
+const initialPostsState = {
   listLoading: false,
   actionsLoading: false,
   totalCount: 0,
   entities: null,
-  productForEdit: undefined,
+  postForEdit: undefined,
   lastError: null
 };
 export const callTypes = {
@@ -16,8 +16,8 @@ export const callTypes = {
 };
 
 export const postsSlice = createSlice({
-  name: "products",
-  initialState: initialProductsState,
+  name: "posts",
+  initialState: initialPostsState,
   reducers: {
     catchError: (state, action) => {
       state.error = `${action.type}: ${action.payload.error}`;
@@ -36,13 +36,13 @@ export const postsSlice = createSlice({
       }
     },
     // getProductById
-    productFetched: (state, action) => {
+    postFetched: (state, action) => {
       state.actionsLoading = false;
-      state.productForEdit = action.payload.productForEdit;
+      state.postForEdit = action.payload.postForEdit;
       state.error = null;
     },
     // findProducts
-    productsFetched: (state, action) => {
+    postsFetched: (state, action) => {
       const {
         totalCount,
         entities
@@ -53,30 +53,30 @@ export const postsSlice = createSlice({
       state.totalCount = totalCount;
     },
     // createProduct
-    productCreated: (state, action) => {
+    postCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
-      state.entities.push(action.payload.product);
+      state.entities.push(action.payload.post);
     },
     // updateProduct
-    productUpdated: (state, action) => {
+    postUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map(entity => {
-        if (entity.id === action.payload.product.id) {
-          return action.payload.product;
+        if (entity.id === action.payload.post.id) {
+          return action.payload.post;
         }
         return entity;
       });
     },
     // deleteProduct
-    productDeleted: (state, action) => {
+    postDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(el => el.id !== action.payload.id);
     },
     // deleteProducts
-    productsDeleted: (state, action) => {
+    postsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
@@ -84,7 +84,7 @@ export const postsSlice = createSlice({
       );
     },
     // productsUpdateState
-    productsStatusUpdated: (state, action) => {
+    postsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const {

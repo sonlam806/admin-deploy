@@ -18,6 +18,7 @@ export default function eCommercePage() {
           />
         }
         <ContentRoute path='/e-commerce/customers' component={CustomersPage} />
+        {/* Routes for Products */}
         <ContentRoute path='/e-commerce/products/new' component={ProductEdit} />
         <ContentRoute
           path='/e-commerce/products/:id/edit'

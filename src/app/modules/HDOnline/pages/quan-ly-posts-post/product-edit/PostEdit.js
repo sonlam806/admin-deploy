@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardHeaderToolbar,
 } from '../../../../../../_metronic/_partials/controls';
-import { ProductEditForm } from './ProductEditForm';
+import { ProductEditForm } from './PostEditForm';
 import { Specifications } from '../product-specifications/Specifications';
 import { SpecificationsUIProvider } from '../product-specifications/SpecificationsUIContext';
 import { useSubheader } from '../../../../../../_metronic/layout';
@@ -31,12 +31,13 @@ const initProduct = {
   VINCode: '',
 };
 
-export function ProductEdit({
+export function PostEdit({
   history,
   match: {
     params: { id },
   },
 }) {
+  console.log('run post edit');
   // Subheader
   const suhbeader = useSubheader();
 
@@ -84,7 +85,7 @@ export function ProductEdit({
   };
 
   const backToProductsList = () => {
-    history.push(`/e-commerce/products`);
+    history.push(`/huong-da-online/posts/post`);
   };
 
   return (

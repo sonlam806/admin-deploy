@@ -1,63 +1,41 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { CustomersLoadingDialog } from './customers-loading-dialog/CustomersLoadingDialog';
-import { CustomerEditDialog } from './customer-edit-dialog/CustomerEditDialog';
-import { CustomerDeleteDialog } from './customer-delete-dialog/CustomerDeleteDialog';
-import { CustomersDeleteDialog } from './customers-delete-dialog/CustomersDeleteDialog';
-import { CustomersFetchDialog } from './customers-fetch-dialog/CustomersFetchDialog';
-import { CustomersUpdateStateDialog } from './customers-update-status-dialog/CustomersUpdateStateDialog';
-import { CustomersUIProvider } from './CustomersUIContext';
-import { CustomersCard } from './CustomersCard';
+import { ProductsLoadingDialog } from './products-loading-dialog/ProductsLoadingDialog';
+import { ProductDeleteDialog } from './product-delete-dialog/ProductDeleteDialog';
+import { ProductsDeleteDialog } from './products-delete-dialog/ProductsDeleteDialog';
+import { ProductsFetchDialog } from './products-fetch-dialog/ProductsFetchDialog';
+import { ProductsUpdateStatusDialog } from './products-update-status-dialog/ProductsUpdateStatusDialog';
+import { ProductsCard } from './ProductsCard';
+import { ProductsUIProvider } from './ProductsUIContext';
 
 export function PostsPage({ history }) {
-  const customersUIEvents = {
-    newCustomerButtonClick: () => {
+  const productsUIEvents = {
+    newPostButtonClick: () => {
       history.push('/huong-da-online/posts/post/new');
     },
-    openEditCustomerDialog: (id) => {
+    openEditProductPage: (id) => {
       history.push(`/huong-da-online/posts/post/${id}/edit`);
     },
-    openDeleteCustomerDialog: (id) => {
+    openDeleteProductDialog: (id) => {
       history.push(`/huong-da-online/posts/post/${id}/delete`);
     },
-    openDeleteCustomersDialog: () => {
-      history.push(`/huong-da-online/posts/post/deleteCustomers`);
+    openDeleteProductsDialog: () => {
+      history.push(`/huong-da-online/posts/post/deleteProducts`);
     },
-    openFetchCustomersDialog: () => {
+    openFetchProductsDialog: () => {
       history.push(`/huong-da-online/posts/post/fetch`);
     },
-    openUpdateCustomersStatusDialog: () => {
+    openUpdateProductsStatusDialog: () => {
       history.push('/huong-da-online/posts/post/updateStatus');
     },
   };
 
   return (
-    <CustomersUIProvider customersUIEvents={customersUIEvents}>
-      <CustomersLoadingDialog />
-      <Route path='/huong-da-online/posts/post/new'>
+    <ProductsUIProvider productsUIEvents={productsUIEvents}>
+      <ProductsLoadingDialog />
+      <Route path='/huong-da-online/posts/post/deleteProducts'>
         {({ history, match }) => (
-          <CustomerEditDialog
-            show={match != null}
-            onHide={() => {
-              history.push('/huong-da-online/posts/post');
-            }}
-          />
-        )}
-      </Route>
-      <Route path='/huong-da-online/posts/post/:id/edit'>
-        {({ history, match }) => (
-          <CustomerEditDialog
-            show={match != null}
-            id={match && match.params.id}
-            onHide={() => {
-              history.push('/huong-da-online/posts/post');
-            }}
-          />
-        )}
-      </Route>
-      <Route path='/huong-da-online/posts/post/deleteCustomers'>
-        {({ history, match }) => (
-          <CustomersDeleteDialog
+          <ProductsDeleteDialog
             show={match != null}
             onHide={() => {
               history.push('/huong-da-online/posts/post');
@@ -67,7 +45,7 @@ export function PostsPage({ history }) {
       </Route>
       <Route path='/huong-da-online/posts/post/:id/delete'>
         {({ history, match }) => (
-          <CustomerDeleteDialog
+          <ProductDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {
@@ -78,7 +56,7 @@ export function PostsPage({ history }) {
       </Route>
       <Route path='/huong-da-online/posts/post/fetch'>
         {({ history, match }) => (
-          <CustomersFetchDialog
+          <ProductsFetchDialog
             show={match != null}
             onHide={() => {
               history.push('/huong-da-online/posts/post');
@@ -88,7 +66,7 @@ export function PostsPage({ history }) {
       </Route>
       <Route path='/huong-da-online/posts/post/updateStatus'>
         {({ history, match }) => (
-          <CustomersUpdateStateDialog
+          <ProductsUpdateStatusDialog
             show={match != null}
             onHide={() => {
               history.push('/huong-da-online/posts/post');
@@ -96,7 +74,7 @@ export function PostsPage({ history }) {
           />
         )}
       </Route>
-      <CustomersCard />
-    </CustomersUIProvider>
+      <ProductsCard />
+    </ProductsUIProvider>
   );
 }
