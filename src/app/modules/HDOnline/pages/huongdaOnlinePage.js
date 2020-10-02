@@ -29,14 +29,14 @@ export default function huongdaOnlinePage() {
           component={CustomersPage}
         />
         {/* Posts Page */}
+        {/* ContentRoute order is important, dont re-order them */}
+        <ContentRoute
+          path='/huong-da-online/posts/post/new'
+          component={PostEdit}
+        />
         <ContentRoute
           path='/huong-da-online/posts/post'
           component={PostsPage}
-        />
-
-        <ContentRoute
-          path='/huong-da-online/posts/post/new'
-          component={QuanLyTagPage}
         />
 
         <ContentRoute

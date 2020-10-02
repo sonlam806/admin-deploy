@@ -9,25 +9,27 @@ export default function mockPost(mock) {
       product
     } = JSON.parse(data);
     const {
-      profileImage = "https://picsum.photos/50",
-        postName = "Castle in the Desert (Charlie Chan in Castle in the Desert)",
-        slug = "Y-Solowarm",
-        language = "Catalan",
-        createDate = "03/03/2020",
-        owner = "Darbee Giggie",
-        species = "Business"
+      title = "vel augue vestibulum ante ipsum primis in faucibus orci",
+        image = "http://dummyimage.com/50x50.png/dddddd/000000",
+        slug = "?sapien=in&a=quam&libero=fringilla&nam=rhoncus&dui=mauris&proin=enim&leo=leo&odio=rhoncus&porttitor=sed&id=vestibulum&consequat=sit&in=amet&consequat=cursus&ut=id&nulla=turpis&sed=integer&accumsan=aliquet&felis=massa&ut=id&at=lobortis&dolor=convallis&quis=tortor&odio=risus",
+        status = false,
+        categories = "F-Series Super Duty",
+        tags = "Zaam-Dox",
+        content = "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+        createdAt = "2020-02-18T10:58:24Z"
     } = product;
 
     const id = generateProductId();
     const newPost = {
       id,
-      profileImage,
-      postName,
+      title,
+      image,
       slug,
-      language,
-      createDate,
-      owner,
-      species
+      status,
+      categories,
+      tags,
+      content,
+      createdAt
     };
     postTableMock.push(newPost);
     return [200, {

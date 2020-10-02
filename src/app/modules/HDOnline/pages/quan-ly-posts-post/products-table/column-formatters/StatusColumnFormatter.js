@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 import {
   ProductStatusCssClasses,
-  ProductStatusTitles
-} from "../../ProductsUIHelpers";
+  ProductStatusTitles,
+} from '../../ProductsUIHelpers';
 
 export const StatusColumnFormatter = (cellContent, row) => (
   <span
@@ -10,6 +10,6 @@ export const StatusColumnFormatter = (cellContent, row) => (
       ProductStatusCssClasses[row.status]
     } label-inline`}
   >
-    {ProductStatusTitles[row.status]}
+    {row.status ? 'Công khai' : 'Không công khai'}
   </span>
 );

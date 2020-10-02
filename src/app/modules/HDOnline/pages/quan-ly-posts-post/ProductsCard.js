@@ -5,7 +5,6 @@ import {
   CardHeader,
   CardHeaderToolbar,
 } from '../../../../../_metronic/_partials/controls';
-import { ProductsFilter } from './products-filter/ProductsFilter';
 import { ProductsTable } from './products-table/ProductsTable';
 import { ProductsGrouping } from './products-grouping/ProductsGrouping';
 import { useProductsUIContext } from './ProductsUIContext';

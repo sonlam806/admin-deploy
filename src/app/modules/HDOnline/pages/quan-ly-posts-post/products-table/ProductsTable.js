@@ -7,7 +7,7 @@ import paginationFactory, {
   PaginationProvider,
 } from 'react-bootstrap-table2-paginator';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../../_redux/products/productsActions';
+import * as actions from '../../../_redux/posts/postsActions';
 import * as uiHelpers from '../ProductsUIHelpers';
 import {
   getSelectRow,
@@ -33,10 +33,10 @@ export function ProductsTable() {
       openDeleteProductDialog: productsUIContext.openDeleteProductDialog,
     };
   }, [productsUIContext]);
-
+  const [rowShowContent, setRowShowContent] = React.useState(null);
   // Getting curret state of products list from store (Redux)
   const { currentState } = useSelector(
-    (state) => ({ currentState: state.products }),
+    (state) => ({ currentState: state.posts }),
     shallowEqual
   );
   const { totalCount, entities, listLoading } = currentState;
@@ -46,23 +46,39 @@ export function ProductsTable() {
     // clear selections list
     productsUIProps.setIds([]);
     // server call by queryParams
-    dispatch(actions.fetchProducts(productsUIProps.queryParams));
+    dispatch(actions.fetchPosts(productsUIProps.queryParams));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productsUIProps.queryParams, dispatch]);
   // Table columns
   const columns = [
     {
-      dataField: 'profileImage',
-      text: 'ảnh đại diện',
+      dataField: 'id',
+      text: 'STT',
       sort: true,
       sortCaret: sortCaret,
+    },
+    {
+      dataField: 'image',
+      text: 'Ảnh đại diện',
+      sort: true,
+      sortCaret: sortCaret,
+      style: () => {
+        return {
+          width: '8%',
+        };
+      },
       formatter: columnFormatters.ProfileImageColumnFormatter,
     },
     {
-      dataField: 'postName',
-      text: 'tên bài viết',
+      dataField: 'title',
+      text: 'Tiêu đề',
       sort: true,
       sortCaret: sortCaret,
+      style: () => {
+        return {
+          width: '15%',
+        };
+      },
     },
     {
       dataField: 'slug',
@@ -71,39 +87,50 @@ export function ProductsTable() {
       sortCaret: sortCaret,
     },
     {
-      dataField: 'language',
-      text: 'Ngôn ngữ',
+      dataField: 'status',
+      text: 'Trạng thái',
+      sort: true,
+      sortCaret: sortCaret,
+      formatter: columnFormatters.StatusColumnFormatter,
+      style: () => {
+        return {
+          width: '12%',
+        };
+      },
+    },
+    {
+      dataField: 'categories',
+      text: 'Chuyên mục',
       sort: true,
       sortCaret: sortCaret,
     },
     {
-      dataField: 'createDate',
-      text: 'Ngày tạo',
+      dataField: 'tags',
+      text: 'Tags',
       sort: true,
       sortCaret: sortCaret,
-      formatter: columnFormatters.CreateDateColumnFormatter,
     },
     {
-      dataField: 'owner',
-      text: 'Người tạo',
+      dataField: 'content',
+      text: 'Nội dung',
       sort: true,
       sortCaret: sortCaret,
-      formatter: columnFormatters.OwnerColumnFormatter,
+      events: {
+        onClick: (e, column, columnIndex, row, rowIndex) => {
+          if (rowIndex === rowShowContent) return setRowShowContent(null);
+          setRowShowContent(rowIndex);
+        },
+      },
+      formatter: columnFormatters.ContentColumnFormatter,
+      formatExtraData: rowShowContent,
     },
-    // {
-    //   dataField: 'status',
-    //   text: 'Status',
-    //   sort: true,
-    //   sortCaret: sortCaret,
-    //   formatter: columnFormatters.StatusColumnFormatter,
-    // },
-    // {
-    //   dataField: 'condition',
-    //   text: 'Condition',
-    //   sort: true,
-    //   sortCaret: sortCaret,
-    //   formatter: columnFormatters.ConditionColumnFormatter,
-    // },
+    {
+      dataField: 'createdAt',
+      text: 'Thời gian đăng',
+      sort: true,
+      sortCaret: sortCaret,
+      formatter: columnFormatters.CreatedAtColumnFormatter,
+    },
     {
       dataField: 'action',
       text: 'Chức năng',
@@ -127,6 +154,7 @@ export function ProductsTable() {
     sizePerPage: productsUIProps.queryParams.pageSize,
     page: productsUIProps.queryParams.pageNumber,
   };
+
   return (
     <>
       <PaginationProvider pagination={paginationFactory(paginationOptions)}>
@@ -149,11 +177,11 @@ export function ProductsTable() {
                 onTableChange={getHandlerTableChange(
                   productsUIProps.setQueryParams
                 )}
-                selectRow={getSelectRow({
-                  entities,
-                  ids: productsUIProps.ids,
-                  setIds: productsUIProps.setIds,
-                })}
+                // selectRow={getSelectRow({
+                //   entities,
+                //   ids: productsUIProps.ids,
+                //   setIds: productsUIProps.setIds,
+                // })}
                 {...paginationTableProps}
               >
                 <PleaseWaitMessage entities={entities} />
