@@ -9,11 +9,14 @@ import {
   CardHeader,
   CardHeaderToolbar,
 } from '../../../../../../_metronic/_partials/controls';
-import { PostEditForm } from './PostEditForm';
 import { useSubheader } from '../../../../../../_metronic/layout';
 import { ModalProgressBar } from '../../../../../../_metronic/_partials/controls';
+import OptionsMenu from './OptionsMenu';
+import * as Yup from 'yup';
+import CKEditorCustom from './CKEditorCustom';
+import { Form, Formik } from 'formik';
 
-const initPost = {
+let initPost = {
   id: undefined,
   title: '',
   image: '',
@@ -25,6 +28,9 @@ const initPost = {
   createdAt: new Date(),
 };
 
+// Validation schema
+const PostEditSchema = Yup.object().shape({});
+
 export function PostEdit({
   history,
   match: {
@@ -35,7 +41,7 @@ export function PostEdit({
   const suhbeader = useSubheader();
 
   // Tabs
-  const [tab, setTab] = useState('basic');
+  // const [tab, setTab] = useState('basic');
   const [title, setTitle] = useState('');
   const dispatch = useDispatch();
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
@@ -49,7 +55,10 @@ export function PostEdit({
 
   useEffect(() => {
     dispatch(actions.fetchPost(id));
-  }, [id, dispatch]);
+    if (postForEdit) {
+      initPost = { ...postForEdit };
+    }
+  }, [id, dispatch, postForEdit]);
 
   useEffect(() => {
     let _title = id ? '' : 'Thêm bài viết';
@@ -82,81 +91,59 @@ export function PostEdit({
   };
 
   return (
-    <Card>
-      {actionsLoading && <ModalProgressBar />}
-      <CardHeader title={title}>
-        <CardHeaderToolbar>
-          <button
-            type='button'
-            onClick={backToPostsList}
-            className='btn btn-light'
-          >
-            <i className='fa fa-arrow-left'></i>
-            Quay lại
-          </button>
+    <>
+      <Formik
+        enableReinitialize={true}
+        initialValues={initPost}
+        validationSchema={PostEditSchema}
+        onSubmit={(values) => {
+          // savePost(values);
+          console.log(values);
+        }}
+      >
+        {({ handleSubmit }) => (
+          <>
+            <Form className='form form-label-right'>
+              <Card>
+                {actionsLoading && <ModalProgressBar />}
+                <CardHeader title={title}>
+                  <CardHeaderToolbar>
+                    <button
+                      type='button'
+                      onClick={backToPostsList}
+                      className='btn btn-light'
+                    >
+                      <i className='fa fa-arrow-left'></i>
+                      Quay lại
+                    </button>
 
-          <button className='btn btn-light ml-2'>
-            <i className='fa fa-redo'></i>
-            Reset
-          </button>
+                    <button className='btn btn-light ml-2'>
+                      <i className='fa fa-redo'></i>
+                      Reset
+                    </button>
 
-          <button
-            type='submit'
-            className='btn btn-primary ml-2'
-            onClick={savePostButton}
-          >
-            Lưu
-          </button>
-        </CardHeaderToolbar>
-      </CardHeader>
-      <CardBody>
-        <ul className='nav nav-tabs nav-tabs-line ' role='tablist'>
-          <li className='nav-item' onClick={() => setTab('basic')}>
-            <a
-              className={`nav-link ${tab === 'basic' && 'active'}`}
-              data-toggle='tab'
-              role='tab'
-              aria-selected={(tab === 'basic').toString()}
-            >
-              Basic info
-            </a>
-          </li>
-          {id && (
-            <>
-              <li className='nav-item' onClick={() => setTab('remarks')}>
-                <a
-                  className={`nav-link ${tab === 'remarks' && 'active'}`}
-                  data-toggle='tab'
-                  role='button'
-                  aria-selected={(tab === 'remarks').toString()}
-                >
-                  Product remarks
-                </a>
-              </li>
-              <li className='nav-item' onClick={() => setTab('specs')}>
-                <a
-                  className={`nav-link ${tab === 'specs' && 'active'}`}
-                  data-toggle='tab'
-                  role='tab'
-                  aria-selected={(tab === 'specs').toString()}
-                >
-                  Product specifications
-                </a>
-              </li>
-            </>
-          )}
-        </ul>
-        <div className='mt-5'>
-          {tab === 'basic' && (
-            <PostEditForm
-              actionsLoading={actionsLoading}
-              product={postForEdit || initPost}
-              btnRef={btnRef}
-              savePost={savePost}
-            />
-          )}
-        </div>
-      </CardBody>
-    </Card>
+                    <button type='submit' className='btn btn-primary ml-2'>
+                      Lưu
+                    </button>
+                  </CardHeaderToolbar>
+                </CardHeader>
+                <CardBody>
+                  <div className='row'>
+                    <div className='col-xl-10'>
+                      {/* Content field */}
+                      <CKEditorCustom name='content' />
+                    </div>
+                    <div className='col-xl-2'>
+                      {/* Right toolbar */}
+                      <OptionsMenu />
+                    </div>
+                  </div>
+                </CardBody>
+              </Card>
+            </Form>
+          </>
+        )}
+      </Formik>
+    </>
   );
 }
