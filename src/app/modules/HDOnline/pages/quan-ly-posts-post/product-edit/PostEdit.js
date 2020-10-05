@@ -23,7 +23,7 @@ let initPost = {
   slug: '',
   status: 'private',
   categories: 'technology',
-  tags: '',
+  tags: ['restaurant'],
   content: '',
   createdAt: new Date(),
 };
@@ -101,12 +101,12 @@ export function PostEdit({
           console.log(values);
         }}
       >
-        {({ handleSubmit }) => (
+        {({ handleSubmit, values }) => (
           <>
             <Form className='form form-label-right'>
               <Card>
                 {actionsLoading && <ModalProgressBar />}
-                <CardHeader title={title}>
+                <CardHeader title={values.title}>
                   <CardHeaderToolbar>
                     <button
                       type='button'

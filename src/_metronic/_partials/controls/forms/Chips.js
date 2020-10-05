@@ -1,7 +1,10 @@
 import React from 'react';
+import { FieldArray, useFormikContext } from 'formik';
 
-export default function Chips({ initialChip, placeholder, ...props }) {
-  const [chips, setChips] = React.useState([initialChip]);
+export default function Chips({ placeholder, ...props }) {
+  const { values } = useFormikContext();
+  const [chips, setChips] = React.useState(values[props.name]);
+  const [errors, setErrors] = React.useState('');
   const KEY = {
     backspace: 8,
     tab: 9,
@@ -9,9 +12,11 @@ export default function Chips({ initialChip, placeholder, ...props }) {
   };
   const INVALID_CHARS = /[^a-zA-Z0-9 ]/g;
 
+  React.useEffect(() => {
+    setChips(values[props.name]);
+  }, [values, props.name]);
   // Helpers
-
-  const onKeyDown = (event) => {
+  const onKeyDown = (event, arrayHelpers) => {
     let keyPressed = event.which;
 
     if (
@@ -19,25 +24,29 @@ export default function Chips({ initialChip, placeholder, ...props }) {
       (keyPressed === KEY.tab && event.target.value)
     ) {
       event.preventDefault();
-      updateChips(event);
+      updateChips(event, arrayHelpers);
     } else if (keyPressed === KEY.backspace) {
       if (!event.target.value && chips.length) {
-        deleteChip(chips[chips.length - 1]);
+        deleteChip([chips.length - 1], arrayHelpers);
       }
     }
   };
 
   const clearInvalidChars = (event) => {
     let value = event.target.value;
-
+    if (value === '') {
+      setErrors('');
+    }
     if (INVALID_CHARS.test(value)) {
-      event.target.value = value.replace(INVALID_CHARS, '');
+      // event.target.value = value.replace(INVALID_CHARS, '');
+      return setErrors('Không chứa kí tự đặc biệt');
     } else if (value.length > props.maxlength) {
       event.target.value = value.substr(0, props.maxlength);
+      return setErrors(`Không vượt quá ${props.maxlength} kí tự`);
     }
   };
 
-  const updateChips = (event) => {
+  const updateChips = (event, arrayHelpers) => {
     if (!props.max || chips.length < props.max) {
       let value = event.target.value;
 
@@ -46,15 +55,15 @@ export default function Chips({ initialChip, placeholder, ...props }) {
       let chip = value.trim().toLowerCase();
 
       if (chip && chips.indexOf(chip) < 0) {
-        setChips(chips.concat(chip));
+        arrayHelpers.push(chip);
       }
     }
 
     event.target.value = '';
   };
 
-  const deleteChip = (chip) => {
-    setChips(chips.filter((item) => item !== chip));
+  const deleteChip = (index, arrayHelpers) => {
+    arrayHelpers.remove(index);
   };
 
   const focusInput = (event) => {
@@ -63,33 +72,35 @@ export default function Chips({ initialChip, placeholder, ...props }) {
     if (children.length) children[children.length - 1].focus();
   };
 
-  const chipsRender = chips.map((chip, index) => {
-    return (
-      <span className='chip' key={index}>
-        <span className='chip-value'>{chip}</span>
-        <button
-          type='button'
-          className='chip-delete-button'
-          onClick={() => deleteChip(chip)}
-        >
-          x
-        </button>
-      </span>
-    );
-  });
-  // let placeholder =
-  //   !props.max || chips.length < props.max ? placeholder : '';
-
   return (
-    <div className='chips' onClick={(e) => focusInput(e)}>
-      {chipsRender}
-      <input
-        type='text'
-        className='chips-input'
-        placeholder={placeholder}
-        onKeyDown={(e) => onKeyDown(e)}
-        onKeyUp={clearInvalidChars}
-      />
-    </div>
+    <FieldArray
+      name={props.name}
+      render={(arrayHelpers) => (
+        <div className='chips' onClick={(e) => focusInput(e)}>
+          {values[props.name].map((chip, index) => {
+            return (
+              <span className='chip' key={index}>
+                <span className='chip-value'>{chip}</span>
+                <button
+                  type='button'
+                  className='chip-delete-button'
+                  onClick={() => arrayHelpers.remove(index)}
+                >
+                  x
+                </button>
+              </span>
+            );
+          })}
+          <input
+            type='text'
+            className='chips-input'
+            placeholder={placeholder ? placeholder : ''}
+            onKeyDown={(e) => onKeyDown(e, arrayHelpers)}
+            onKeyUp={clearInvalidChars}
+          />
+          {errors && <p>{errors}</p>}
+        </div>
+      )}
+    ></FieldArray>
   );
 }

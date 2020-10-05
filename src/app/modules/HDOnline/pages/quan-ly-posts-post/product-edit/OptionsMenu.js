@@ -4,6 +4,7 @@ import { FormGroup, FormControlLabel, Checkbox } from '@material-ui/core';
 import { AccordionContext, useAccordion } from './AccordionMenuContext';
 import { useFormikContext } from 'formik';
 import Chips from '../../../../../../_metronic/_partials/controls/forms/Chips';
+import { Input } from '../../../../../../_metronic/_partials/controls';
 
 const AccordionHD = ({ children }) => {
   return <div className='accordion  accordion-toggle-arrow'> {children}</div>;
@@ -15,7 +16,6 @@ const AccordionChild = ({ title, children, index }) => {
   const handleActiveChild = (index) => {
     if (index === openChild) return setCurrentOpenChild(null);
     setCurrentOpenChild(index);
-    console.log(openChild);
   };
   return (
     <div className='card'>
@@ -44,24 +44,49 @@ const AccordionChild = ({ title, children, index }) => {
 // TODO: Change children to use Component
 export default function OptionsMenu() {
   const openChild = useAccordion();
-  const { setFieldValue, values } = useFormikContext();
+  const {
+    setFieldValue,
+    values,
+    getFieldProps,
+    touched,
+    errors,
+  } = useFormikContext();
   return (
     <AccordionContext.Provider value={openChild}>
       <AccordionHD>
         {/* Post title */}
-        <AccordionChild title={'Title'} index={0}>
-          <input type='text' name='title' placeholder='insert title' />
+        <AccordionChild title={'Tiêu đề'} index={0}>
+          <Input
+            field={{ ...getFieldProps('title') }}
+            form={{
+              touched,
+              errors,
+            }}
+            placeholder='Nhập tiêu đề bài viết'
+          />
         </AccordionChild>
         {/* Post image */}
-        <AccordionChild title={'Image'} index={1}>
-          <input type='file' name='image' placeholder='upload image' />
+        <AccordionChild title={'Ảnh đại diện'} index={1}>
+          <input
+            type='file'
+            name='image'
+            placeholder='upload image'
+            {...getFieldProps('image')}
+          />
         </AccordionChild>
         {/* Post slug */}
         <AccordionChild title={'Slug'} index={2}>
-          <input type='text' name='slug' placeholder='slug' />
+          <Input
+            field={{ ...getFieldProps('slug') }}
+            form={{
+              touched,
+              errors,
+            }}
+            placeholder='Nhập slug'
+          />
         </AccordionChild>
         {/* Post status */}
-        <AccordionChild title={'Status'} index={3}>
+        <AccordionChild title={'Trạng thái'} index={3}>
           <FormGroup>
             <FormControlLabel
               control={
@@ -86,7 +111,7 @@ export default function OptionsMenu() {
           </FormGroup>
         </AccordionChild>
         {/* Post categories */}
-        <AccordionChild title={'Categories'} index={4}>
+        <AccordionChild title={'Chuyên mục'} index={4}>
           <FormGroup>
             <FormControlLabel
               control={
@@ -112,7 +137,12 @@ export default function OptionsMenu() {
         </AccordionChild>
         {/* Post tags */}
         <AccordionChild title={'Tags'} index={5}>
-          <Chips initialChip='restaurant' placeholder='Add chip ...' />
+          <Chips
+            placeholder='Add tags ...'
+            name='tags'
+            max={5}
+            maxlength={20}
+          />
         </AccordionChild>
       </AccordionHD>
     </AccordionContext.Provider>
