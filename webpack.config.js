@@ -32,7 +32,9 @@ const mainConfig = function () {
 			// output path based on the entries' filename
 			filename: "[name].js"
 		},
-		resolve: {extensions: ['.scss']},
+		resolve: {
+			extensions: ['.scss']
+		},
 		plugins: [
 			// webpack log message
 			new WebpackMessages({
@@ -51,28 +53,28 @@ const mainConfig = function () {
 					// hook name
 					compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
 						(async () => {
-							await del.sync(distPath + "/sass/*.js", {force: true});
+							await del.sync(distPath + "/sass/*.js", {
+								force: true
+							});
 						})();
 					});
 				}
 			},
 		],
 		module: {
-			rules: [
-				{
-					test: /\.scss$/,
-					use: [
-						MiniCssExtractPlugin.loader,
-						"css-loader",
-						{
-							loader: "sass-loader",
-							options: {
-								sourceMap: true,
-							}
-						},
-					]
-				},
-			]
+			rules: [{
+				test: /\.scss$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					"css-loader",
+					{
+						loader: "sass-loader",
+						options: {
+							sourceMap: true,
+						}
+					},
+				]
+			}, ]
 		},
 	}
 };
